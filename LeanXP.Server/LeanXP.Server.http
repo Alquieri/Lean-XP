@@ -1,0 +1,6 @@
+@LeanXP.Server_HostAddress = http://localhost:5022
+
+GET {{LeanXP.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
