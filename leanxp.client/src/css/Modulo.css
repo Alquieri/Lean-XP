@@ -1,0 +1,53 @@
+#main-modulo {
+    border-radius: 10px;
+    padding: 9em;
+    background: linear-gradient(to bottom, #64E688, #38804C);
+    position: relative;
+    overflow: hidden;
+    text-align: center; /* Isso ajuda a centralizar os conteúdos */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Centraliza o título do módulo (número do módulo) */
+#title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    transition: opacity 1s ease;
+    margin: 0;
+}
+
+/* Centraliza o conteúdo dentro de 'inside' */
+#inside {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 1s ease;
+    text-align: center;
+}
+
+#inside img {
+        width: 30%;
+        position: absolute;
+        bottom: 105px; 
+        left: 150px
+}
+
+/* Ao passar o mouse, esconde o título e mostra o conteúdo */
+#main-modulo:hover #title {
+    opacity: 0;
+}
+
+#main-modulo:hover #inside {
+    opacity: 1;
+}
+
+#main-modulo:hover {
+    background: linear-gradient( to bottom, rgb(5, 9, 6, 0.70), rgb(5, 9, 6, 0.70)); /* Escurece fundo */
+    color: aliceblue;
+}
+
