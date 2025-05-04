@@ -1,15 +1,18 @@
-import './css/App.css';
+import React from 'react';
+import './css/Home.css';
 import Sidebar from './components/Sidebar';
 import Modulo from './components/Modulo';
 import Computador from './assets/computador.png'
 import UserProfile from './assets/userProfile.png'
 import Diamond from './assets/Logo.png'
 
-function App() {
+
+function Home() {
 
     let porcentagem = 30;
     let progress = { width: `${porcentagem}%` };
     return (
+
         <><Sidebar />
             <div id="container">
                 <div id="main">
@@ -65,7 +68,8 @@ function App() {
 
             
         </>
+
     );
 }
 
-export default App;
+export default Home;
