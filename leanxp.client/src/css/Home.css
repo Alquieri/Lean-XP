@@ -5,10 +5,6 @@
     border: 0;
 }
 
-th, td {
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
 #container{ 
     display: flex;
     justify-content: center;
