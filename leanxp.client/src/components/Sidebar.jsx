@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import '../css/Sidebar.css';
+import logo from'../assets/logo.png'
 
 const Sidebar = () => {
     const [isDarkMode, setIsDarkMode] = useState(true);
@@ -8,8 +9,10 @@ const Sidebar = () => {
     return (
         <div className={`sidebar ${!isDarkMode ? 'light-mode' : ''}`}>
             {/* Logo Section */}
-            <div className="logo-section">
-                <h1>LOGO</h1>
+            <div className="logo-section" >
+                
+                <h1>Lean XP</h1>
+                <img src={logo} id="logo" alt="Logo"></img>
             </div>
 
             {/* Navigation Links */}
@@ -17,20 +20,14 @@ const Sidebar = () => {
                 <a href="/" className="nav-link">
                     <span>Home</span>
                 </a>
-                <a href="/teams" className="nav-link">
-                    <span>Teams</span>
+                <a href="/perfil" className="nav-link">
+                    <span>Perfil</span>
                 </a>
-                <a href="/tournaments" className="nav-link">
-                    <span>Tournaments</span>
+                <a href="/curso" className="nav-link">
+                    <span>Curso</span>
                 </a>
-                <a href="/matches" className="nav-link">
-                    <span>Matches</span>
-                </a>
-                <a href="/players" className="nav-link">
-                    <span>Players</span>
-                </a>
-                <a href="/profile" className="nav-link">
-                    <span>Profile</span>
+                <a href="/exit" className="nav-link">
+                    <span>Exit</span>
                 </a>
             </div>
 

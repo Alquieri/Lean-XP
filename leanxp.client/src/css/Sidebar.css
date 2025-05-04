@@ -13,9 +13,11 @@
     padding: 0 15px;
     margin-bottom: 30px;
   }
-
+  .logo-section img{
+      width: 50px;
+  }
   .logo-section h1 {
-    font-size: 20px;
+    font-size: 50px;
   }
 
   /* Prevent content overlap */
@@ -39,7 +41,9 @@
     padding: 0 10px;
     margin-bottom: 20px;
   }
-
+  .logo-section img{
+      width: 50px;
+  }
   .logo-section h1 {
     font-size: 18px;
   }
@@ -66,25 +70,29 @@
 
 
 .sidebar {
-  width: 10vh;
-  height: 100vh;
-  background-color: #1a0033;
-  color: #f5f0ff;
-  padding: 20px 0;
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow-x: hidden;
-  z-index: 100;
-  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
-  border-right: 1px solid rgba(245, 240, 255, 0.1);
+    width: 10vh;
+    height: 100vh;
+    background: linear-gradient(to bottom, #64E688, #38804C);
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-x: hidden;
+    z-index: 100;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
+    border-right: 1px solid rgba(245, 240, 255, 0.1);
 }
 
 .sidebar:hover {
   width: 25vh;
   background-color: #2a004d;
 }
+
+    .sidebar:hover .logo-section img {
+        opacity: 1;
+        transform: translateX(0);
+    }
 
 .logo-section {
   padding: 0 20px;
@@ -94,8 +102,16 @@
   padding-bottom: 20px;
 }
 
+    .logo-section img {
+        width: 100%;
+        opacity: 0;
+        transform: translateX(-20px); /* adicionado */
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        text-shadow: 0 0 10px rgba(245, 240, 255, 0.3);
+    }
+
 .logo-section h1 {
-  font-size: 24px;
+  font-size: 45px;
   opacity: 0;
   transform: translateX(-20px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -120,11 +136,11 @@
   align-items: center;
   padding: 14px;
   text-decoration: none;
-  color: #f5f0ff;
+  color: rgba(0, 0, 0);
   border-radius: 12px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
-  background-color: rgba(245, 240, 255, 0.02);
+  background-color: rgb(238, 233, 246, 0.02);
   border: 1px solid rgba(245, 240, 255, 0.05);
 }
 
@@ -184,18 +200,18 @@
 }
 
 .login-button {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  padding: 14px;
-  background: rgba(115, 0, 157, 0.547);
-  border: 1px solid rgba(94, 255, 82, 0.2);
-  color: #f5f0ff;
-  cursor: pointer;
-  border-radius: 12px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  white-space: nowrap;
-  text-decoration: none;  
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 14px;
+    background: rgb(0, 254, 44, 0.55);
+    border: 1px solid rgba(94, 255, 82, 0.2);
+    color: #f5f0ff;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    text-decoration: none;
 }
 
 .logout-button:hover {
@@ -205,9 +221,9 @@
 }
 
 .login-button:hover {
-  background-color: rgba(115, 0, 157, 0.7);;
-  transform: translateX(5px);
-  box-shadow: 0 4px 15px rgba(54, 1, 74, 0.547);
+    background-color: rgb(0, 112, 19, 0.55);
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(54, 1, 74, 0.547);
 }
 
 .login-button svg {

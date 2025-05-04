@@ -28,8 +28,8 @@ const Modulo = (props) => {
             <h1 id="title">Modulo {props.numero}</h1>
 
             <div id="inside">
-                <img src={ image}></img>
-                <p>{ props.titulo }</p>
+                <div><img src={image}></img></div>
+                <div id="text"><p>{props.titulo}</p></div>
 
             </div>
         </div>

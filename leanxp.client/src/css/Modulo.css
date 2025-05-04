@@ -5,6 +5,7 @@
     position: relative;
     overflow: hidden;
     text-align: center; /* Isso ajuda a centralizar os conteúdos */
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Centraliza o título do módulo (número do módulo) */
@@ -29,13 +30,12 @@
     text-align: center;
 }
 
-    #inside img {
-        position: absolute;
-        top: 0;
-        right: 0;
+#inside img {
         width: 30%;
-    
-    }
+        position: absolute;
+        bottom: 105px; 
+        left: 150px
+}
 
 /* Ao passar o mouse, esconde o título e mostra o conteúdo */
 #main-modulo:hover #title {
