@@ -4,12 +4,14 @@ import Modulo from './components/Modulo';
 import Computador from './assets/computador.png'
 import UserProfile from './assets/userProfile.png'
 import Diamond from './assets/Logo.png'
+import Login from './Pages/Login/Login';
 
 function App() {
 
     let porcentagem = 30;
     let progress = { width: `${porcentagem}%` };
     return (
+
         <><Sidebar />
             <div id="container">
                 <div id="main">
@@ -65,6 +67,7 @@ function App() {
 
             
         </>
+
     );
 }
 
