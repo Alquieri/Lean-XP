@@ -5,12 +5,13 @@ import Modulo from './components/Modulo';
 import Computador from './assets/computador.png'
 import UserProfile from './assets/userProfile.png'
 import Diamond from './assets/Logo.png'
+import ach from './assets/achievements.png'
 
 
 
 function Home() {
 
-    let porcentagem = 30;
+    let porcentagem = 70;
     let progress = { width: `${porcentagem}%` };
     return (
 
@@ -54,13 +55,13 @@ function Home() {
                         <h2 id="progress-bar-title">Progresso do Curso</h2>
                         <div id="progress-bar">
                         
-                            <div id="progress" style={ progress } ></div> 
+                            <div id="progress" style={ progress } ><h5>{ porcentagem}%</h5></div> 
                         </div>
                         <div id="achievements">
 
-                            <h4>{ porcentagem}%</h4>
-                            <img src={Diamond}></img>
-                            <img src={Diamond}></img>
+                            
+                            <img src={ach}></img>
+                            <img src={ach}></img>
                         </div>
                         
                     </div>

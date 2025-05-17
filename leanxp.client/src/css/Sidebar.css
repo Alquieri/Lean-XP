@@ -72,7 +72,7 @@
 .sidebar {
     width: 10vh;
     height: 100vh;
-    background: linear-gradient(to bottom, #64E688, #38804C);
+    background: #105040;
     padding: 20px 0;
     display: flex;
     flex-direction: column;
@@ -86,7 +86,7 @@
 
 .sidebar:hover {
   width: 25vh;
-  background-color: #2a004d;
+  background-color: #105040;
 }
 
     .sidebar:hover .logo-section img {
@@ -136,7 +136,7 @@
   align-items: center;
   padding: 14px;
   text-decoration: none;
-  color: rgba(0, 0, 0);
+  color: rgba(255, 255, 255);
   border-radius: 12px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;

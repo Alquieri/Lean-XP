@@ -11,7 +11,6 @@ const Sidebar = () => {
             {/* Logo Section */}
             <div className="logo-section" >
                 
-                <h1>Lean XP</h1>
                 <img src={logo} id="logo" alt="Logo"></img>
             </div>
 
@@ -31,7 +30,7 @@ const Sidebar = () => {
                 </a>
             </div>
 
-            {/* Bottom Section - Temporariamente estático */}
+            {/* Bottom Section - Temporariamente estï¿½tico */}
             <div className="bottom-section">
                 <button className="login-button">
                     <span>Sign In</span>
