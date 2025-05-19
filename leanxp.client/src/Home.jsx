@@ -11,7 +11,7 @@ import ach from './assets/achievements.png'
 
 function Home() {
 
-    let porcentagem = 70;
+    let porcentagem = 50;
     let progress = { width: `${porcentagem}%` };
     return (
 
@@ -19,9 +19,13 @@ function Home() {
             <div id="container">
                 <div id="main">
                 <div id="Header">
-                    <h1>Bem-vindo #UserName<br></br></h1>
-                    <h2>ao curso de Lean Software Devlopment</h2>
-
+                    
+                     <div className="boas-vindas">
+                        <p>
+                            <strong>Bem-vindo #username</strong><br />
+                            <span>ao curso de <span className="destaque">Lean Software Development</span></span>
+                        </p>
+                        </div>
                 </div>
 
 

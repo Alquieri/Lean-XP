@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     border: 0;
+    font-family: 'Inter', sans-serif;
 }
 
 #container{ 
@@ -27,39 +28,44 @@
     color: #000000;
     font-size: 2em;
 }
-
 #continue {
     display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
-    margin-bottom: 70px;
-    padding: 3em 12em 3em 8em;
-    background-color: rgb(39, 146, 237);
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.3);
-    border-radius: 20px;
+    flex-wrap: wrap; /* melhora a responsividade */
+    justify-content: space-between;
     align-items: center;
+    gap: 2em;
+    margin: 40px auto;
+    padding: 3em 8em;
+    background-color: #80CBC4; /* verde-água */
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    border-radius: 25px;
+    max-width: 90%;
+    transition: background-color 0.3s ease;
 }
 
 #continue h1 {
-    font-size: 30px;
-    margin-top: 20px;
-    margin-left: 3em;
-    padding: 0.3em;
-    background-color: #1cfef0;
+    font-size: 2em;
+    color: #004D40; 
+    padding: 0.6em 1.2em;
+    background-color: #B2DFDB; 
     border-radius: 20px;
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
-
-    
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
 }
-    #continue h1:hover {
-        background-color: #088a82;
-        cursor: pointer;
-    }
+
+#continue h1:hover {
+    background-color: #00897B; 
+    color: white;
+    cursor: pointer;
+    transform: translateY(-2px);
+}
 
 #continue img {
-    width: 5em;
-
+    width: 4.5em;
+    transition: transform 0.3s ease;
+    margin-right: 4em;
 }
+
 
 #modules {
     display: grid;
@@ -75,7 +81,7 @@
     margin-top: 5em;
     width: 25em;
     padding: 0em;
-    padding-bottom: 2em;
+    padding-top: 1em;
     align-items: center;
     position: relative;
     border-radius: 30px;
@@ -83,13 +89,10 @@
 }
 
 #userName  {
-
     margin-top: 10px;
-    
-
     }
 #progress-bar-title {
-    margin-top: 3em;
+    margin-top: 2em;
 }
 
 #progress-bar {
@@ -125,8 +128,6 @@
     align-items: center;
     padding-top: 3px;
 
-    
-
 }
 
 #achievements {
@@ -141,5 +142,27 @@
 #achievements img {
     width: 15%;
     margin-left: 10px;
+    margin-bottom: 1vh;
 
+}
+
+
+ /* mensagensinha de boas-vindas */
+
+.boas-vindas p {
+  font-family: 'Arial', sans-serif;
+  font-size: 1.2em;
+  color: #333;
+  line-height: 1.5;
+  margin-top: 1em;
+}
+
+.boas-vindas strong {
+  color: #0A2240; /* Azul escuro do título */
+  font-weight: bold;
+}
+
+.boas-vindas .destaque {
+  color: #1A3B7A; /* Azul médio para "Lean Software Development" */
+  font-weight: 500;
 }

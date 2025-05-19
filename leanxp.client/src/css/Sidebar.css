@@ -1,114 +1,40 @@
-@media (max-width: 768px) {
-  .sidebar {
-    width: 60px;
-    padding: 15px 0;
-    transform: translateX(0);
-  }
-
-  .sidebar.retracted {
-    transform: translateX(-100%);
-  }
-
-  .logo-section {
-    padding: 0 15px;
-    margin-bottom: 30px;
-  }
-  .logo-section img{
-      width: 50px;
-  }
-  .logo-section h1 {
-    font-size: 50px;
-  }
-
-  /* Prevent content overlap */
-  .main-content {
-    margin-left: 60px;
-    transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .sidebar.retracted + .main-content {
-    margin-left: 0;
-  }
-}
-
-@media (max-width: 480px) {
-  .sidebar {
-    width: 50px;
-    padding: 10px 0;
-  }
-
-  .logo-section {
-    padding: 0 10px;
-    margin-bottom: 20px;
-  }
-  .logo-section img{
-      width: 50px;
-  }
-  .logo-section h1 {
-    font-size: 18px;
-  }
-
-  .main-content {
-    margin-left: 50px;
-  }
-}
-
-@media (max-height: 600px) {
-  .sidebar {
-    padding: 10px 0;
-  }
-
-  .logo-section {
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-  }
-
-  .nav-links {
-    gap: 5px;
-  }
-}
-
-
+/* === BASE SIDEBAR === */
 .sidebar {
-    width: 10vh;
-    height: 100vh;
-    background: #105040;
-    padding: 20px 0;
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow-x: hidden;
-    z-index: 100;
-    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
-    border-right: 1px solid rgba(245, 240, 255, 0.1);
+  width: 60px;
+  height: 100vh;
+  background: #105040;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-x: hidden;
+  z-index: 100;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
+  border-right: 1px solid rgba(245, 240, 255, 0.1);
 }
 
 .sidebar:hover {
-  width: 25vh;
+  width: 250px;
   background-color: #105040;
 }
 
-    .sidebar:hover .logo-section img {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
+/* === LOGO SECTION === */
 .logo-section {
   padding: 0 20px;
   margin-bottom: 40px;
-  white-space: nowrap;
   border-bottom: 1px solid rgba(245, 240, 255, 0.1);
   padding-bottom: 20px;
+  white-space: nowrap;
 }
 
-    .logo-section img {
-        width: 100%;
-        opacity: 0;
-        transform: translateX(-20px); /* adicionado */
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        text-shadow: 0 0 10px rgba(245, 240, 255, 0.3);
-    }
+.logo-section img {
+  width: 100%;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-shadow: 0 0 10px rgba(245, 240, 255, 0.3);
+}
 
 .logo-section h1 {
   font-size: 45px;
@@ -118,11 +44,13 @@
   text-shadow: 0 0 10px rgba(245, 240, 255, 0.3);
 }
 
+.sidebar:hover .logo-section img,
 .sidebar:hover .logo-section h1 {
   opacity: 1;
   transform: translateX(0);
 }
 
+/* === NAVIGATION LINKS === */
 .nav-links {
   flex: 1;
   display: flex;
@@ -134,13 +62,15 @@
 .nav-link {
   display: flex;
   align-items: center;
+  margin-top: 10px;
+  margin-left: 3px;
   padding: 14px;
+  color: #ffffff;
   text-decoration: none;
-  color: rgba(255, 255, 255);
   border-radius: 12px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   white-space: nowrap;
-  background-color: rgb(238, 233, 246, 0.02);
+  background-color: rgba(238, 233, 246, 0.02);
   border: 1px solid rgba(245, 240, 255, 0.05);
 }
 
@@ -151,9 +81,12 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.nav-link svg {
+.nav-link svg,
+.nav-link i {
   min-width: 24px;
   margin-right: 15px;
+  font-size: 20px;
+  text-align: center;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   filter: drop-shadow(0 0 8px rgba(245, 240, 255, 0.2));
 }
@@ -176,42 +109,39 @@
   transform: translateX(0);
 }
 
+/* === BOTTOM SECTION === */
 .bottom-section {
   padding: 0 15px;
+  
   margin-top: auto;
   border-top: 1px solid rgba(245, 240, 255, 0.1);
   padding-top: 20px;
   padding-bottom: 4vh;
 }
 
-.logout-button {
+.logout-button,
+.login-button {
   width: 100%;
   display: flex;
   align-items: center;
   padding: 14px;
+  cursor: pointer;
+  border-radius: 12px;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logout-button {
   background: rgba(255, 82, 82, 0.1);
   border: 1px solid rgba(255, 82, 82, 0.2);
   color: #f5f0ff;
-  cursor: pointer;
-  border-radius: 12px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  white-space: nowrap;
-  text-decoration: none;
 }
 
 .login-button {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    padding: 14px;
-    background: rgb(0, 254, 44, 0.55);
-    border: 1px solid rgba(94, 255, 82, 0.2);
-    color: #f5f0ff;
-    cursor: pointer;
-    border-radius: 12px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    white-space: nowrap;
-    text-decoration: none;
+  background: rgba(0, 254, 44, 0.55);
+  border: 1px solid rgba(94, 255, 82, 0.2);
+  color: #f5f0ff;
 }
 
 .logout-button:hover {
@@ -221,22 +151,23 @@
 }
 
 .login-button:hover {
-    background-color: rgb(0, 112, 19, 0.55);
-    transform: translateX(5px);
-    box-shadow: 0 4px 15px rgba(54, 1, 74, 0.547);
+  background-color: rgba(0, 112, 19, 0.55);
+  transform: translateX(5px);
+  box-shadow: 0 4px 15px rgba(54, 1, 74, 0.547);
 }
 
-.login-button svg {
-  filter: drop-shadow(0 0 8px rgba(12, 190, 234, 0.3));
-  min-width: 24px;
-  margin-right: 15px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
+.login-button svg,
 .logout-button svg {
   min-width: 24px;
   margin-right: 15px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.login-button svg {
+  filter: drop-shadow(0 0 8px rgba(12, 190, 234, 0.3));
+}
+
+.logout-button svg {
   filter: drop-shadow(0 0 8px rgba(255, 82, 82, 0.3));
 }
 
@@ -245,32 +176,22 @@
   filter: drop-shadow(0 0 12px rgba(255, 82, 82, 0.4));
 }
 
-.login-button span {
-  opacity: 0;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  font-weight: 500;
-  letter-spacing: 0.5px;
-}
-
+.login-button span,
 .logout-button span {
   opacity: 0;
   transform: translateX(-20px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   font-weight: 500;
   letter-spacing: 0.5px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.sidebar:hover .login-button span,
 .sidebar:hover .logout-button span {
   opacity: 1;
   transform: translateX(0);
 }
 
-.sidebar:hover .login-button span {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* Light mode styles */
+/* === LIGHT MODE === */
 .sidebar.light-mode {
   background-color: #f5f0ff;
   color: #2a004d;
@@ -279,7 +200,7 @@
 }
 
 .sidebar.light-mode:hover {
-  background-color: #fff;
+  background-color: #ffffff;
 }
 
 .sidebar.light-mode .nav-link {
@@ -297,6 +218,11 @@
   color: #ff5252;
   background-color: rgba(255, 82, 82, 0.05);
 }
+
+.sidebar.light-mode .logout-button:hover {
+  background-color: rgba(255, 82, 82, 0.1);
+}
+
 .sidebar.light-mode .login-button {
   color: #d4db04;
   background-color: rgba(82, 2, 85, 0.05);
@@ -306,12 +232,110 @@
   background-color: rgba(82, 2, 85, 0.1);
 }
 
-.sidebar.light-mode .login-button:hover {
-  background-color: rgba(82, 2, 85, 0.05);
+/* === RESPONSIVE MEDIA QUERIES === */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 60px;
+    padding: 15px 0;
+    transform: translateX(0);
+  }
+
+  .sidebar.retracted {
+    transform: translateX(-100%);
+  }
+
+  .logo-section {
+    padding: 0 15px;
+    margin-bottom: 30px;
+  }
+
+  .logo-section img {
+    width: 50px;
+  }
+
+  .logo-section h1 {
+    font-size: 50px;
+  }
+
+  .main-content {
+    margin-left: 60px;
+    transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .sidebar.retracted + .main-content {
+    margin-left: 0;
+  }
 }
 
-.sidebar.light-mode .logout-button:hover {
-  background-color: rgba(255, 82, 82, 0.1);
+@media (max-width: 480px) {
+  .sidebar {
+    width: 50px;
+    padding: 10px 0;
+  }
+
+  .logo-section {
+    padding: 0 10px;
+    margin-bottom: 20px;
+  }
+
+  .logo-section img {
+    width: 50px;
+  }
+
+  .logo-section h1 {
+    font-size: 18px;
+  }
+
+  .main-content {
+    margin-left: 50px;
+  }
 }
 
+@media (max-height: 600px) {
+  .sidebar {
+    padding: 10px 0;
+  }
 
+  .logo-section {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+  }
+
+  .nav-links {
+    gap: 5px;
+  }
+
+}
+/* === TOP ICON (DIAMOND) === */
+.top-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  margin-bottom: 10px;
+}
+
+.top-icon i {
+  font-size: 28px;
+  color: #fff;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.sidebar:hover .top-icon i {
+  transform: scale(1.2) rotate(10deg);
+}
+
+/* Esconde o ícone de diamante quando a sidebar está expandida */
+.sidebar:hover .top-icon {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Exibe o ícone de diamante normalmente quando a sidebar está colapsada */
+.top-icon {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
