@@ -25,7 +25,7 @@ const Modulo = (props) => {
 
     return (
         <div id="main-modulo">
-            <h1 id="title">Modulo {props.numero}</h1>
+            <h2 id="title">Modulo {props.numero}</h2>
 
             <div id="inside">
                 <div><img src={image}></img></div>
@@ -37,5 +37,5 @@ const Modulo = (props) => {
         
     );
 };
-
+// Exportando o componente Modulo para ser utilizado em outros arquivos
 export default Modulo;
