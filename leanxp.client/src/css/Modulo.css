@@ -49,5 +49,6 @@
 #main-modulo:hover {
     background: linear-gradient( to bottom, rgb(5, 9, 6, 0.70), rgb(5, 9, 6, 0.70)); /* Escurece fundo */
     color: aliceblue;
+    cursor: pointer;
 }
 

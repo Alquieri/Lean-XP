@@ -111,8 +111,7 @@
 
 /* === BOTTOM SECTION === */
 .bottom-section {
-  padding: 0 15px;
-  
+  padding: 0 12px;
   margin-top: auto;
   border-top: 1px solid rgba(245, 240, 255, 0.1);
   padding-top: 20px;
@@ -130,6 +129,7 @@
   white-space: nowrap;
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  gap: 10px;
 }
 
 .logout-button {

@@ -133,17 +133,14 @@
 #achievements {
     display: flex;
     margin-top: 20px;
-    margin-left: 90px;
     font-size: 30px;
-    width: 100%;
-    
-/*    margin-left: 100px*/
+    width: 70%;
+
 }
 #achievements img {
     width: 15%;
     margin-left: 10px;
     margin-bottom: 1vh;
-
 }
 
 
