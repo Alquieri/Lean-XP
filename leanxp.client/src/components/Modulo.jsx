@@ -7,6 +7,7 @@ import imgLock from '../assets/padlock.png';
 
 const Modulo = (props) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalContent, setModalContent] = useState('conteudo');
 
     let image;
 
@@ -26,7 +27,45 @@ const Modulo = (props) => {
 
     const handleClick = () => {
         if (props.status !== 'lock') {
+            setModalContent('conteudo'); // sempre abre no conteúdo
             setIsModalOpen(true);
+        }
+    };
+
+    const renderModalContent = () => {
+        switch (modalContent) {
+            case 'conteudo':
+                return (
+                    <div>
+                        <h3>Conteúdo</h3>
+                        {props.children}
+                    </div>
+                );
+            case 'video':
+                return (
+                    <div>
+                        <h3>Vídeo</h3>
+                        {/* Exemplo fixo, mas pode passar via props */}
+                        <iframe 
+                            width="100%" 
+                            height="315" 
+                            src="https://www.youtube.com/embed/ttxsCvdXnu4" 
+                            title="Vídeo explicativo" 
+                            frameBorder="0" 
+                            allowFullScreen
+                        ></iframe>
+                    </div>
+                );
+            case 'questionario':
+                return (
+                    <div>
+                        <h3>Questionário</h3>
+                        <p>Pergunta 1: ...</p>
+                        <p>Pergunta 2: ...</p>
+                    </div>
+                );
+            default:
+                return null;
         }
     };
 
@@ -43,7 +82,16 @@ const Modulo = (props) => {
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
                 <h2>Módulo {props.numero}</h2>
                 <p>{props.titulo}</p>
-                {props.children} 
+
+                <div className="modulo-buttons">
+                    <button onClick={() => setModalContent('conteudo')}>Conteúdo</button>
+                    <button onClick={() => setModalContent('video')}>Vídeo</button>
+                    <button onClick={() => setModalContent('questionario')}>Questionário</button>
+                </div>
+
+                <div className="modal-dynamic-content">
+                    {renderModalContent()}
+                </div>
             </Modal>
         </>
     );

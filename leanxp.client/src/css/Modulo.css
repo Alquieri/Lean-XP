@@ -52,3 +52,28 @@
     cursor: pointer;
 }
 
+
+.modulo-buttons {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.modulo-buttons button {
+    padding: 8px 12px;
+    background: #1e88e5;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.modulo-buttons button:hover {
+    background: #1565c0;
+}
+
+.modal-dynamic-content {
+    margin-top: 15px;
+}
+

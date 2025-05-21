@@ -7,11 +7,11 @@ const Modal = ({ isOpen, onClose, children }) => {
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-window" onClick={(e) => e.stopPropagation()}>
-        <button className="close-button" onClick={onClose}>×</button>
+        <button className="close-button" onClick={onClose}>x</button>
         {children}
       </div>
     </div>
   );
 };
 
-export default Modal;
+export default Modal; 

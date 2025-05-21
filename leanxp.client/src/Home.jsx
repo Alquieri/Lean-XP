@@ -11,7 +11,7 @@ import ach from './assets/achievements.png'
 
 function Home() {
 
-    let porcentagem = 100;
+    let porcentagem = 20;
     let progress = { width: `${porcentagem}%` };
     return (
 
@@ -52,11 +52,11 @@ function Home() {
                         <p><strong>Comparativo:</strong> diferenças entre o Lean, metodologias tradicionais e ágeis.</p>
 
                         <a href="https://www.youtube.com/watch?v=ttxsCvdXnu4" target="_blank" rel="noopener noreferrer">
-                            🎥 Vídeo explicativo 1 – Lean Manufacturing e Software
+                            🎥 Vídeo explicativo 1 - Lean Manufacturing e Software
                         </a>
                         <br />
                         <a href="https://www.youtube.com/watch?v=0YxdFq2EujM" target="_blank" rel="noopener noreferrer">
-                            🎥 Vídeo explicativo 2 – Princípios do Lean
+                            🎥 Vídeo explicativo 2 - Princípios do Lean
                         </a>
                             <br />
 
@@ -71,6 +71,7 @@ function Home() {
                     <Modulo numero="06" titulo="Cultura Lean" status="lock" />
                     <Modulo numero="07" titulo="Lean e Agile" status="lock" />
                     <Modulo numero="08" titulo="Lean em Ação" status="lock" />
+
                 </div>
 
                 
