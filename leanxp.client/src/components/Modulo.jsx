@@ -1,10 +1,12 @@
-import React from 'react'; 
-import '../css/Modulo.css'; // Importando o CSS do componente'
-import imgConfimed from '../assets/confirmation.png'
-import imgUnlock from '../assets/open-padlock.png'
-import imgLock from '../assets/padlock.png'
+import React, { useState } from 'react'; 
+import '../css/Modulo.css';
+import Modal from './Modal';
+import imgConfimed from '../assets/confirmation.png';
+import imgUnlock from '../assets/open-padlock.png';
+import imgLock from '../assets/padlock.png';
 
 const Modulo = (props) => {
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     let image;
 
@@ -20,22 +22,31 @@ const Modulo = (props) => {
             break;
         default:
             image = imgLock;
-
     }
 
+    const handleClick = () => {
+        if (props.status !== 'lock') {
+            setIsModalOpen(true);
+        }
+    };
+
     return (
-        <div id="main-modulo">
-            <h2 id="title">Modulo {props.numero}</h2>
-
-            <div id="inside">
-                <div><img src={image}></img></div>
-                <div id="text"><p>{props.titulo}</p></div>
-
+        <>
+            <div id="main-modulo" onClick={handleClick}>
+                <h2 id="title">Módulo {props.numero}</h2>
+                <div id="inside">
+                    <div><img src={image} alt="Status do módulo" /></div>
+                    <div id="text"><p>{props.titulo}</p></div>
+                </div>
             </div>
-        </div>
 
-        
+            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+                <h2>Módulo {props.numero}</h2>
+                <p>{props.titulo}</p>
+                {props.children} 
+            </Modal>
+        </>
     );
 };
-// Exportando o componente Modulo para ser utilizado em outros arquivos
+
 export default Modulo;

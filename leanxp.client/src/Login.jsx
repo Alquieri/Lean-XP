@@ -2,8 +2,11 @@ import { useState } from 'react';
 import './css/Login.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from 'react-router-dom'; // Importação correta
 
 const Login = () => {
+  const navigate = useNavigate(); // Hook funcionando dentro do componente
+
   const [isSignUp, setIsSignUp] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -21,9 +24,14 @@ const Login = () => {
     if (formData.email && formData.password) {
       toast.success('Login successful!', {
         position: "top-right",
-        autoClose: 3000,
+        autoClose: 2000,
         theme: "dark"
       });
+
+      // Espera o Toast encerrar antes de redirecionar
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
     } else {
       toast.error('Please enter email and password.', {
         position: "top-right",

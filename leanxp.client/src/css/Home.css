@@ -6,14 +6,6 @@
     font-family: 'Inter', sans-serif;
 }
 
-#container{ 
-    display: flex;
-    justify-content: center;
-    gap: 10em;
-    margin-left: 4em;
-    background-color: #F7F6F4;
-}
-
 
 /*it is the main div*/
 #main {
@@ -21,21 +13,21 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    
-
+   
 }
 #Header {
     color: #000000;
     font-size: 2em;
+    
 }
 #continue {
     display: flex;
     flex-wrap: wrap; /* melhora a responsividade */
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    gap: 2em;
+    gap: 1em;
     margin: 40px auto;
-    padding: 3em 8em;
+    padding: 2em 4em;
     background-color: #80CBC4; /* verde-água */
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
     border-radius: 25px;
@@ -44,14 +36,15 @@
 }
 
 #continue h1 {
-    font-size: 2em;
+    font-size: 1.5em;
     color: #004D40; 
-    padding: 0.6em 1.2em;
+    padding: 0.6em 1em;
     background-color: #B2DFDB; 
     border-radius: 20px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
 }
+
 
 #continue h1:hover {
     background-color: #00897B; 
@@ -74,62 +67,54 @@
 
 }
 
-#containerProgress {
-    display: flex;
-    flex-direction: column;
-    background-color: #FFFFFD;
-    margin-top: 5em;
-    width: 25em;
-    padding: 0em;
-    padding-top: 1em;
-    align-items: center;
-    position: relative;
-    border-radius: 30px;
-    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+.progresso-container {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  width: 100%;
+  margin-top: 1em;
 }
 
-#userName  {
-    margin-top: 10px;
-    }
-#progress-bar-title {
-    margin-top: 2em;
+.progresso-container h2 {
+  font-size: 1em;
+  color: #004D40;
+  font-weight: 600;
+  padding: 0.4em 0;
+  white-space: nowrap;
 }
 
 #progress-bar {
-    margin-top: 1em;
-    width: 80%;
-    background-color: #e0e0e0;
-    border-radius: 10px;
-    height: 25px;
-    overflow: hidden;
+  flex: 1;
+  background-color: #E6F0EF;
+  border-radius: 12px;
+  height: 25px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
 }
-
-
-#userProgress img {
-    width: 9em;
-    margin-left: 30px;
-
-}
-
 
 #progress {
-    height: 100%;
-    background-color: #64E688;
-    border-radius: 10px;
-    transition: width 0.4s ease;
+  height: 100%;
+  background: linear-gradient(90deg, #26A69A, #2bbb89); /* gradiente moderno */
+  border-radius: 12px 0 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: bold;
+  transition: width 0.4s ease;
 }
 
+
 #progress h5 {
-    
     font-size: 17px;
-    color: #00450a;
+    color: #ffffff;
     text-align: center;
     justify-content: center;
     align-items: center;
-    padding-top: 3px;
+    padding-top: 1px;
+} 
 
-}
-
+/* 
 #achievements {
     display: flex;
     margin-top: 20px;
@@ -141,7 +126,7 @@
     width: 15%;
     margin-left: 10px;
     margin-bottom: 1vh;
-}
+}  */
 
 
  /* mensagensinha de boas-vindas */
