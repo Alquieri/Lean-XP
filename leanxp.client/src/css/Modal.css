@@ -32,19 +32,6 @@
   line-height: 1.6;
 }
 
-.modal-window a {
-  display: block;
-  margin-top: 1rem;
-  text-decoration: none;
-  color: #1e88e5;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.modal-window a:hover {
-  color: #1565c0;
-  text-decoration: underline;
-}
 
 .close-button {
   position: absolute;
@@ -73,6 +60,16 @@
   }
 }
 
+.question {
+  font-size: 1.2em;
+  margin-bottom: 1em;
+  padding-left: 0.5em;
+  border-radius: 5px;
+  background-color: #dee7e6; 
+  color: #000000;
+  font-weight: 500;
+}
+
 .option {
   display: flex;
   align-items: center;
@@ -98,7 +95,7 @@
   margin-top: 1em;
   display: inline-block;
   padding: 0.5em 1em;
-  background-color: #1e88e5;
+  background-color: #1e4b46;
   color: #fff;
   border: none;
   border-radius: 5px;
