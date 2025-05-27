@@ -1,109 +1,95 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './css/Home.css';
 import Sidebar from './components/Sidebar';
 import Modulo from './components/Modulo';
-import Computador from './assets/computador.png'
-import UserProfile from './assets/userProfile.png'
+import Computador from './assets/computador.png';
 import Container from './components/container';
-import ach from './assets/achievements.png'
-
-
 
 function Home() {
+    const [modulos, setModulos] = useState([
+        { numero: '01', titulo: 'Introdução ao Lean', status: 'confirmed', video: 'https://www.youtube.com/embed/ttxsCvdXnu4' },
+        { numero: '02', titulo: 'Eliminação de Desperdícios', status: 'pending' },
+        { numero: '03', titulo: 'Melhoria Contínua', status: 'lock' },
+        { numero: '04', titulo: 'Empoderamento da Equipe', status: 'lock' },
+        { numero: '05', titulo: 'Foco no Cliente', status: 'lock' },
+        { numero: '06', titulo: 'Cultura Lean', status: 'lock' },
+        { numero: '07', titulo: 'Lean e Agile', status: 'lock' },
+        { numero: '08', titulo: 'Lean em Ação', status: 'lock' }
+    ]);
 
-    let porcentagem = 20;
-    let progress = { width: `${porcentagem}%` };
+    const porcentagem = (modulos.filter(m => m.status === 'confirmed').length / modulos.length) * 100;
+    const progress = { width: `${porcentagem}%` };
+
+    const handleModuloComplete = (numero) => {
+        setModulos(prevModulos => {
+            const index = prevModulos.findIndex(m => m.numero === numero);
+            const newModulos = [...prevModulos];
+
+            // Confirma o módulo atual
+            newModulos[index].status = 'confirmed';
+
+            // Desbloqueia o próximo, se existir
+            if (index + 1 < newModulos.length && newModulos[index + 1].status === 'lock') {
+                newModulos[index + 1].status = 'pending';
+            }
+
+            return newModulos;
+        });
+    };
+
     return (
-
-        <><Sidebar />
+        <>
+            <Sidebar />
             <Container>
                 <div id="main">
-                <div id="Header">
-                    
-                     <div className="boas-vindas">
-                        <p>
-                            <strong>Bem-vindo #username</strong><br />
-                            <span>ao curso de <span className="destaque">Lean Software Development</span></span>
-                        </p>
-                        </div>
-                </div>
-
-
-
-                <div id="continue">
-                    <img src={Computador} href="Computador"></img>
-                    <h1>Continue de onde parou </h1> 
-                    <div className="progresso-container">
-                        <h2>Progresso:</h2>
-                        <div id="progress-bar">
-                        <div id="progress" style={progress}><h5>{porcentagem}%</h5></div>
+                    <div id="Header">
+                        <div className="boas-vindas">
+                            <p>
+                                <strong>Bem-vindo #username</strong><br />
+                                <span>ao curso de <span className="destaque">Lean Software Development</span></span>
+                            </p>
                         </div>
                     </div>
-                </div>
 
-                    
+                    <div id="continue">
+                        <img src={Computador} alt="Computador" />
+                        <h1>Continue de onde parou </h1>
+                        <div className="progresso-container">
+                            <h2>Progresso:</h2>
+                            <div id="progress-bar">
+                                <div id="progress" style={progress}><h5>{Math.round(porcentagem)}%</h5></div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div id="modules">
-                    <Modulo numero="01" titulo="Introdução ao Lean" status="confirmed">
-
-                        <p><strong>O que é Lean:</strong> origem no <em>Lean Manufacturing</em> da Toyota.</p>
-                        <p><strong>Transição para o contexto de software:</strong> como os princípios foram adaptados.</p>
-                        <p><strong>Objetivos:</strong> foco em eficiência, redução de desperdício e melhoria contínua.</p>
-                        <p><strong>Benefícios esperados:</strong> mais qualidade, menos retrabalho e maior produtividade.</p>
-                        <p><strong>Comparativo:</strong> diferenças entre o Lean, metodologias tradicionais e ágeis.</p>
-
-                        <a href="https://www.youtube.com/watch?v=ttxsCvdXnu4" target="_blank" rel="noopener noreferrer">
-                            🎥 Vídeo explicativo 1 - Lean Manufacturing e Software
-                        </a>
-                        <br />
-                        <a href="https://www.youtube.com/watch?v=0YxdFq2EujM" target="_blank" rel="noopener noreferrer">
-                            🎥 Vídeo explicativo 2 - Princípios do Lean
-                        </a>
-                            <br />
-
-                    </Modulo>
-
-                    <Modulo numero="02" titulo="Eliminação de Desperdícios" status="pending">
-                        <p>Este módulo vai te ensinar a identificar e eliminar desperdícios.</p>
-                    </Modulo>
-                    <Modulo numero="03" titulo="Melhoria Contínua" status="lock" />
-                    <Modulo numero="04" titulo="Empoderamento da Equipe" status="lock" />
-                    <Modulo numero="05" titulo="Foco no Cliente" status="lock" />
-                    <Modulo numero="06" titulo="Cultura Lean" status="lock" />
-                    <Modulo numero="07" titulo="Lean e Agile" status="lock" />
-                    <Modulo numero="08" titulo="Lean em Ação" status="lock" />
-
-                </div>
-
-                
-                </div>
-                </Container>
-{/*                 
-                <div id="sidebarInf">
-                    <div id="containerProgress">
-                        
-                        <div id="userProgress">
-
-                            <img src={ UserProfile} href="userPHoto"></img>
-                            <h2 id="userName"> Gustavo Sacoman</h2>
-                        </div>
-
-                        <h2 id="progress-bar-title">Progresso do Curso</h2>
-                        
-                        
-                             
-                        </div>
-                        <div id="achievements">
-
-                            
-                            <img src={ach}></img>
-                            <img src={ach}></img>
-                        </div>
-                        
+                        {modulos.map(modulo => (
+                            <Modulo
+                                key={modulo.numero}
+                                numero={modulo.numero}
+                                titulo={modulo.titulo}
+                                status={modulo.status}
+                                video={modulo.video}
+                                onComplete={handleModuloComplete}
+                            >
+                                {modulo.numero === '01' && (
+                                    <>
+                                        <p><strong>O que é Lean:</strong> origem no <em>Lean Manufacturing</em> da Toyota.</p>
+                                        <p><strong>Transição para o contexto de software:</strong> como os princípios foram adaptados.</p>
+                                        <p><strong>Objetivos:</strong> foco em eficiência, redução de desperdício e melhoria contínua.</p>
+                                        <p><strong>Benefícios esperados:</strong> mais qualidade, menos retrabalho e maior produtividade.</p>
+                                        <p><strong>Comparativo:</strong> diferenças entre o Lean, metodologias tradicionais e ágeis.</p>
+                                    </>
+                                )}
+                                {modulo.numero === '02' && (
+                                    <p>Este módulo vai te ensinar a identificar e eliminar desperdícios.</p>
+                                )}
+                            </Modulo>
+                        ))}
                     </div>
                 </div>
-            */}
+            </Container>
         </>
-
     );
 }
 

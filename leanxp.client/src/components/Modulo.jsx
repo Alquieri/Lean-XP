@@ -1,9 +1,10 @@
-import React, { useState } from 'react'; 
+import React, { useState } from 'react';
 import '../css/Modulo.css';
 import Modal from './Modal';
 import imgConfimed from '../assets/confirmation.png';
 import imgUnlock from '../assets/open-padlock.png';
 import imgLock from '../assets/padlock.png';
+import Quiz from './Quiz';
 
 const Modulo = (props) => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -27,8 +28,14 @@ const Modulo = (props) => {
 
     const handleClick = () => {
         if (props.status !== 'lock') {
-            setModalContent('conteudo'); // sempre abre no conteúdo
+            setModalContent('conteudo');
             setIsModalOpen(true);
+        }
+    };
+
+    const handleQuizComplete = () => {
+        if (props.onComplete) {
+            props.onComplete(props.numero);
         }
     };
 
@@ -45,24 +52,19 @@ const Modulo = (props) => {
                 return (
                     <div>
                         <h3>Vídeo</h3>
-                        {/* Exemplo fixo, mas pode passar via props */}
-                        <iframe 
-                            width="100%" 
-                            height="315" 
-                            src="https://www.youtube.com/embed/ttxsCvdXnu4" 
-                            title="Vídeo explicativo" 
-                            frameBorder="0" 
+                        <iframe
+                            width="100%"
+                            height="315"
+                            src={props.video}
+                            title="Vídeo explicativo"
+                            frameBorder="0"
                             allowFullScreen
                         ></iframe>
                     </div>
                 );
             case 'questionario':
                 return (
-                    <div>
-                        <h3>Questionário</h3>
-                        <p>Pergunta 1: ...</p>
-                        <p>Pergunta 2: ...</p>
-                    </div>
+                    <Quiz bloco={props.numero} onQuizComplete={handleQuizComplete} />
                 );
             default:
                 return null;
