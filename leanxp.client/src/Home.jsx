@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar';
 import Modulo from './components/Modulo';
 import Computador from './assets/computador.png';
 import Container from './components/container';
+import Conteudo from './cONTEUDO.jsx';
 
 function Home() {
     const [modulos, setModulos] = useState([
@@ -74,11 +75,9 @@ function Home() {
                             >
                                 {modulo.numero === '01' && (
                                     <>
-                                        <p><strong>O que é Lean:</strong> origem no <em>Lean Manufacturing</em> da Toyota.</p>
-                                        <p><strong>Transição para o contexto de software:</strong> como os princípios foram adaptados.</p>
-                                        <p><strong>Objetivos:</strong> foco em eficiência, redução de desperdício e melhoria contínua.</p>
-                                        <p><strong>Benefícios esperados:</strong> mais qualidade, menos retrabalho e maior produtividade.</p>
-                                        <p><strong>Comparativo:</strong> diferenças entre o Lean, metodologias tradicionais e ágeis.</p>
+
+
+                                        <Conteudo numero="1"/>
                                     </>
                                 )}
                                 {modulo.numero === '02' && (
