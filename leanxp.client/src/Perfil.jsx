@@ -48,7 +48,7 @@ function Perfil() {
                             <p className='perfil-info'><strong>Cargo:</strong> {user.cargo}</p>
                         </div>
                     </div>
-                    <div className="perfil-achievements">
+                    <div className="perfil-achievements-silver">
                         <h2 className="perfil-achievements-title">Conquistas</h2>
                         <ul className="perfil-achievements-list">
                             {achievements.map(a => (
