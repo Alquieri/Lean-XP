@@ -1,39 +1,108 @@
-import React, { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './css/Perfil.css';
+import { ToastContainer, toast } from 'react-toastify';
 import Sidebar from './components/Sidebar';
-import Modulo from './components/Modulo';
 import Computador from './assets/computador.png';
 import Container from './components/container';
 
+const API_URL = 'http://localhost:5000/api';
+
+
 function Perfil() {
-    const [user] = useState({
-        nome: "João Silva",
-        email: "joao.silva@email.com",
-        cargo: "Desenvolvedor Frontend",
-        avatar: Computador
-    });
 
-    const [achievements] = useState([
-        { 
-            id: 1, 
-            titulo: "Primeiro Login", 
-            descricao: "Você acessou o sistema pela primeira vez!",
-            icone: "https://img.icons8.com/fluency/48/000000/login-rounded-right.png"
-        },
-        { 
-            id: 2, 
-            titulo: "Curso Concluído", 
-            descricao: "Parabéns por concluir seu primeiro curso!",
-            icone: "https://img.icons8.com/fluency/48/000000/graduation-cap.png"
-        },
-        { 
-            id: 3, 
-            titulo: "Desafio Resolvido", 
-            descricao: "Você resolveu um desafio com sucesso!",
-            icone: "https://img.icons8.com/fluency/48/000000/checked-checkbox.png"
+    const [user, setUser] = useState([]);
+    const [achievements, setAchievements] = useState([]);
+
+    const showError = (message) => {
+        toast.error(message, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: false,
+            draggable: true,
+            progress: undefined,
+
+        });
+    };
+
+    //const showSuccess = (message) => {
+    //    toast.success(message, {
+    //        position: "top-right",
+    //        autoClose: 3000,
+    //        hideProgressBar: false,
+    //        closeOnClick: true,
+    //        pauseOnHover: false,
+    //        draggable: true,
+    //        progress: undefined,
+    //    });
+    //};
+
+    const getUser = async () => {
+
+        const storedUser = localStorage.getItem("user");
+
+        if (!storedUser) {
+            showError("No user found in localStorage");
+            return;
         }
-    ]);
+        const user = JSON.parse(storedUser);
 
+        const response = await fetch(`${API_URL}/user/${user.id}`,
+
+            {
+                method: 'GET',
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
+
+        if (!response.ok) {
+            showError("Internal error, user cannot be located");
+        }
+
+        const userData = await response.json();
+
+        setUser(userData);
+
+    }
+
+    const getAchievements = async () => {
+        if (!user || !user.id) {
+            console.warn("User not defined yet");
+            return;
+        }
+        console.log("User:", user);
+        
+        
+
+        const response = await fetch(`${API_URL}/achievement/all/${user.id}`, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
+
+        if (!response.ok) {
+            showError("Internal error, achievements cannot be located");
+            return;
+        }
+
+        const achievementsData = await response.json();
+        console.log(achievementsData);
+        setAchievements(achievementsData);
+    }
+
+    useEffect(() => {
+        getUser();
+        
+    }, []);
+
+    useEffect(() => {
+        if (user && user.id) {
+            getAchievements();
+        }
+    }, [user]);
     return (
         <>
             <Sidebar />
@@ -41,24 +110,38 @@ function Perfil() {
                 <section className="perfil-container">
                    
                     <div className="perfil-info">
-                        <img src={user.avatar} alt="Avatar" className="perfil-avatar" />
+                        <img src={Computador} alt="Avatar" className="perfil-avatar" />
                         <div className="perfil-dados">
-                            <p className='perfil-nome'><strong>Nome:</strong> {user.nome}</p>
-                            <p className='perfil-email'><strong>Email:</strong> {user.email}</p>
-                            <p className='perfil-info'><strong>Cargo:</strong> {user.cargo}</p>
+                           
+                        <p className='perfil-nome'><strong>Nome:</strong> {user.nome}</p>
+                        <p className='perfil-email'><strong>Email:</strong> {user.email}</p>
+                        <p className='perfil-info'><strong>Cargo:</strong> {user.cargo}</p>
+                      
                         </div>
                     </div>
                     <div className="perfil-achievements">
                         <h2 className="perfil-achievements-title">Conquistas</h2>
                         <ul className="perfil-achievements-list">
-                            {achievements.map(a => (
-                                <li key={a.id} className="perfil-achievement-item">
-                                    <img src={a.icone} alt={a.titulo} className="perfil-achievement-icon" />
-                                    <div>
-                                        <strong>{a.titulo}:</strong> {a.descricao}
-                                    </div>
-                                </li>
-                            ))}
+                            {achievements.length > 0 ? (
+                                achievements.map(a => (
+                                    <li key={a.id} className="perfil-achievement-item">
+                                        {a.image ? (
+                                            <img
+                                                src={`data:image/png;base64,${a.image}`}
+                                                alt={a.title}
+                                                className="perfil-achievement-icon"
+                                            />
+                                        ) : (
+                                            <div>Sem imagem</div>
+                                        )}
+                                        <div>
+                                            <strong>{a.title}:</strong> {a.description}
+                                        </div>
+                                    </li>
+                                ))
+                            ) : (
+                                <li>Nenhuma conquista encontrada.</li>
+                            )}
                         </ul>
                     </div>
                 </section>
