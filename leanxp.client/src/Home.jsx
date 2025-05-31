@@ -4,18 +4,18 @@ import Sidebar from './components/Sidebar';
 import Modulo from './components/Modulo';
 import Computador from './assets/computador.png';
 import Container from './components/container';
-import Conteudo from './cONTEUDO.jsx';
+import Conteudo from './Conteudo.jsx';
 
 function Home() {
     const [modulos, setModulos] = useState([
         { numero: '01', titulo: 'Introdução ao Lean', status: 'confirmed', video: 'https://www.youtube.com/embed/ttxsCvdXnu4' },
-        { numero: '02', titulo: 'Eliminação de Desperdícios', status: 'pending' },
-        { numero: '03', titulo: 'Melhoria Contínua', status: 'lock' },
-        { numero: '04', titulo: 'Empoderamento da Equipe', status: 'lock' },
-        { numero: '05', titulo: 'Foco no Cliente', status: 'lock' },
-        { numero: '06', titulo: 'Cultura Lean', status: 'lock' },
-        { numero: '07', titulo: 'Lean e Agile', status: 'lock' },
-        { numero: '08', titulo: 'Lean em Ação', status: 'lock' }
+        { numero: '02', titulo: 'Eliminação de Desperdícios', status: 'confirmed' },
+        { numero: '03', titulo: 'Melhoria Contínua', status: 'confirmed' },
+        { numero: '04', titulo: 'Empoderamento da Equipe', status: 'confirmed' },
+        { numero: '05', titulo: 'Foco no Cliente', status: 'confirmed' },
+        { numero: '06', titulo: 'Cultura Lean', status: 'confirmed' },
+        { numero: '07', titulo: 'Lean e Agile', status: 'confirmed' },
+        { numero: '08', titulo: 'Lean em Ação', status: 'pending' }
     ]);
 
     const porcentagem = (modulos.filter(m => m.status === 'confirmed').length / modulos.length) * 100;
@@ -75,13 +75,29 @@ function Home() {
                             >
                                 {modulo.numero === '01' && (
                                     <>
-
-
                                         <Conteudo numero="1"/>
                                     </>
                                 )}
                                 {modulo.numero === '02' && (
-                                    <p>Este módulo vai te ensinar a identificar e eliminar desperdícios.</p>
+                                        <Conteudo numero="2"/>
+                                )}
+                                {modulo.numero === '03' && (
+                                    <Conteudo numero="3"/>
+                                )}
+                                {modulo.numero === '04' && (
+                                    <Conteudo numero="4"/>
+                                )}
+                                {modulo.numero === '05' && (
+                                    <Conteudo numero="5"/>
+                                )}
+                                {modulo.numero === '06' && (
+                                    <Conteudo numero="6"/>
+                                )}
+                                {modulo.numero === '07' && (
+                                    <Conteudo numero="7"/>
+                                )}
+                                {modulo.numero === '08' && (
+                                    <Conteudo numero="8"/>
                                 )}
                             </Modulo>
                         ))}
