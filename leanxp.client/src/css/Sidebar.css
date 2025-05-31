@@ -1,8 +1,14 @@
+/* Adicionado para melhor controle de layout e dimensionamento */
+* {
+  box-sizing: border-box;
+}
+
 /* === BASE SIDEBAR === */
 .sidebar {
   width: 60px;
   height: 100vh;
-  background: #105040;
+  background: #105040; /* Tema verde original */
+  color: #ffffff; /* Cor de texto padrão para o tema verde */
   padding: 20px 0;
   display: flex;
   flex-direction: column;
@@ -16,7 +22,7 @@
 
 .sidebar:hover {
   width: 250px;
-  background-color: #105040;
+  background-color: #105040; /* Mantém a cor de fundo ao expandir */
 }
 
 /* === LOGO SECTION === */
@@ -42,6 +48,7 @@
   transform: translateX(-20px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-shadow: 0 0 10px rgba(245, 240, 255, 0.3);
+  /* A cor será herdada de .sidebar (color: #ffffff;) */
 }
 
 .sidebar:hover .logo-section img,
@@ -84,14 +91,15 @@
 .nav-link svg,
 .nav-link i {
   min-width: 24px;
-  margin-right: 15px;
+  margin-right: 15px; /* Espaço entre ícone e texto */
   font-size: 20px;
   text-align: center;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   filter: drop-shadow(0 0 8px rgba(245, 240, 255, 0.2));
 }
 
-.nav-link:hover svg {
+.nav-link:hover svg,
+.nav-link:hover i { /* Aplicando também para <i> se usado como ícone */
   transform: scale(1.1) rotate(5deg);
   filter: drop-shadow(0 0 12px rgba(245, 240, 255, 0.4));
 }
@@ -111,11 +119,20 @@
 
 /* === BOTTOM SECTION === */
 .bottom-section {
-  padding: 0 12px;
-  margin-top: auto;
-  border-top: 1px solid rgba(245, 240, 255, 0.1);
-  padding-top: 20px;
-  padding-bottom: 4vh;
+  /* Padding original quando a sidebar está expandida */
+ padding-left: 12px;
+ padding-right: 12px;
+ padding-top: 20px;
+ padding-bottom: 4vh;
+ margin-top: auto;
+ border-top: 1px solid rgba(245, 240, 255, 0.1);
+transition: padding-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), padding-right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Quando a sidebar NÃO ESTÁ EM HOVER (ou seja, está COLAPSADA) */
+.sidebar:not(:hover) .bottom-section {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .logout-button,
@@ -129,42 +146,58 @@
   white-space: nowrap;
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  gap: 10px;
+  gap: 10px; /* Espaço entre ícone e span (quando o span estiver visível) */
+  color: #f5f0ff; /* Cor do texto dos botões no tema escuro, ajustada para levemente off-white */
+  margin-top: 10px;
+  /* margin-left: 3px; /* Removido por padrão para usar largura total quando colapsado.
+                         Adicione o bloco abaixo se o recuo de 3px for desejado. */
+}
+
+/* OPCIONAL: Se você quiser que os botões de login/logout tenham o mesmo recuo de 3px
+   que os .nav-link têm quando a sidebar está colapsada: */
+.sidebar:not(:hover) .logout-button,
+.sidebar:not(:hover) .login-button {
+  margin-left: 3px;
+  width: calc(100% - 3px);
 }
 
 .logout-button {
   background: rgba(255, 82, 82, 0.1);
   border: 1px solid rgba(255, 82, 82, 0.2);
-  color: #f5f0ff;
+  /* color: #f5f0ff; /* Já definido em .logout-button, .login-button */
 }
 
 .login-button {
-  background: rgba(0, 254, 44, 0.55);
+  background: rgba(0, 254, 44, 0.15);
   border: 1px solid rgba(94, 255, 82, 0.2);
-  color: #f5f0ff;
+  /* color: #f5f0ff; /* Já definido em .logout-button, .login-button */
 }
 
 .logout-button:hover {
   background-color: rgba(255, 82, 82, 0.2);
   transform: translateX(5px);
   box-shadow: 0 4px 15px rgba(255, 82, 82, 0.15);
+  border: 1px solid rgba(255, 82, 82, 0.3);
 }
 
 .login-button:hover {
-  background-color: rgba(0, 112, 19, 0.55);
+  background-color: rgba(0, 112, 19, 0.25);
   transform: translateX(5px);
-  box-shadow: 0 4px 15px rgba(54, 1, 74, 0.547);
+  box-shadow: 0 4px 15px rgba(54, 1, 74, 0.15); /* Sombra original do tema escuro */
+  border: 1px solid rgba(94, 255, 82, 0.3);
 }
 
 .login-button svg,
 .logout-button svg {
   min-width: 24px;
-  margin-right: 15px;
+  /* margin-right: 15px; /* Removido porque 'gap: 10px;' no botão pai já cuida do espaçamento */
+  font-size: 20px;
+  text-align: center;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .login-button svg {
-  filter: drop-shadow(0 0 8px rgba(12, 190, 234, 0.3));
+  filter: drop-shadow(0 0 8px rgba(12, 190, 234, 0.3)); /* Filtro original azulado */
 }
 
 .logout-button svg {
@@ -175,6 +208,13 @@
   transform: rotate(-90deg);
   filter: drop-shadow(0 0 12px rgba(255, 82, 82, 0.4));
 }
+/* :hover para o SVG do login-button se desejado (mantendo o original) */
+.login-button:hover svg {
+  /* Nenhuma transformação específica no hover do SVG do login no original,
+     mas poderia adicionar algo como: transform: scale(1.1); */
+  filter: drop-shadow(0 0 12px rgba(12, 190, 234, 0.4)); /* Brilho aumentado no hover */
+}
+
 
 .login-button span,
 .logout-button span {
@@ -182,54 +222,50 @@
   transform: translateX(-20px);
   font-weight: 500;
   letter-spacing: 0.5px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Crucial para garantir que o span não ocupe espaço quando escondido */
+  width: 0;
+  overflow: hidden;
+  display: inline-block; /* Para width e transform funcionarem bem */
+  vertical-align: middle;
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .sidebar:hover .login-button span,
 .sidebar:hover .logout-button span {
   opacity: 1;
   transform: translateX(0);
+  width: auto; /* Permite que o span ocupe sua largura natural */
 }
 
-/* === LIGHT MODE === */
-.sidebar.light-mode {
-  background-color: #f5f0ff;
-  color: #2a004d;
-  box-shadow: 2px 0 15px rgba(82, 2, 85, 0.15);
-  border-right: 1px solid rgba(82, 2, 85, 0.1);
+/* === TOP ICON (DIAMOND) === */
+.top-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+  margin-bottom: 10px;
+  opacity: 1; /* Visível por padrão */
+  transform: scale(1);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-.sidebar.light-mode:hover {
-  background-color: #ffffff;
+.top-icon i {
+  font-size: 28px;
+  color: #fff;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3));
+  transition: transform 0.3s ease;
 }
 
-.sidebar.light-mode .nav-link {
-  color: #2a004d;
-  background-color: rgba(82, 2, 85, 0.02);
-  border: 1px solid rgba(82, 2, 85, 0.05);
+.sidebar:hover .top-icon i {
+  transform: scale(1.2) rotate(10deg);
 }
 
-.sidebar.light-mode .nav-link:hover {
-  background-color: rgba(82, 2, 85, 0.05);
-  border: 1px solid rgba(82, 2, 85, 0.1);
-}
-
-.sidebar.light-mode .logout-button {
-  color: #ff5252;
-  background-color: rgba(255, 82, 82, 0.05);
-}
-
-.sidebar.light-mode .logout-button:hover {
-  background-color: rgba(255, 82, 82, 0.1);
-}
-
-.sidebar.light-mode .login-button {
-  color: #d4db04;
-  background-color: rgba(82, 2, 85, 0.05);
-}
-
-.sidebar.light-mode .login-button:hover {
-  background-color: rgba(82, 2, 85, 0.1);
+/* Esconde o ícone de diamante quando a sidebar está expandida */
+.sidebar:hover .top-icon {
+  opacity: 0;
+  transform: scale(0.5);
 }
 
 /* === RESPONSIVE MEDIA QUERIES === */
@@ -254,7 +290,7 @@
   }
 
   .logo-section h1 {
-    font-size: 50px;
+    font-size: 50px; /* Original, pode ser grande para 50px de img. Ajustar se necessário */
   }
 
   .main-content {
@@ -279,11 +315,11 @@
   }
 
   .logo-section img {
-    width: 50px;
+    width: 40px; /* Ajustado para caber melhor em 50px de sidebar */
   }
 
   .logo-section h1 {
-    font-size: 18px;
+    font-size: 18px; /* Original, parece mais adequado para esta largura */
   }
 
   .main-content {
@@ -304,38 +340,4 @@
   .nav-links {
     gap: 5px;
   }
-
-}
-/* === TOP ICON (DIAMOND) === */
-.top-icon {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 60px;
-  margin-bottom: 10px;
-}
-
-.top-icon i {
-  font-size: 28px;
-  color: #fff;
-  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.3));
-  transition: transform 0.3s ease;
-}
-
-.sidebar:hover .top-icon i {
-  transform: scale(1.2) rotate(10deg);
-}
-
-/* Esconde o ícone de diamante quando a sidebar está expandida */
-.sidebar:hover .top-icon {
-  opacity: 0;
-  transform: scale(0.5);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-/* Exibe o ícone de diamante normalmente quando a sidebar está colapsada */
-.top-icon {
-  opacity: 1;
-  transform: scale(1);
-  transition: opacity 0.3s ease, transform 0.3s ease;
 }

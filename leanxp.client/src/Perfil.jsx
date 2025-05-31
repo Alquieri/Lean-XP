@@ -119,7 +119,7 @@ function Perfil() {
                       
                         </div>
                     </div>
-                    <div className="perfil-achievements">
+                    <div className="perfil-achievements-silver">
                         <h2 className="perfil-achievements-title">Conquistas</h2>
                         <ul className="perfil-achievements-list">
                             {achievements.length > 0 ? (

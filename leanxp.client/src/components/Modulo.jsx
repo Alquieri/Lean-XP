@@ -44,7 +44,6 @@ const Modulo = (props) => {
             case 'conteudo':
                 return (
                     <div>
-                        <h3>Conteúdo</h3>
                         {props.children}
                     </div>
                 );
@@ -82,8 +81,8 @@ const Modulo = (props) => {
             </div>
 
             <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-                <h2>Módulo {props.numero}</h2>
-                <p>{props.titulo}</p>
+                <h2 className="modal-title">Módulo {props.numero}</h2>
+                <p className="modal-description">{props.titulo}</p>
 
                 <div className="modulo-buttons">
                     <button onClick={() => setModalContent('conteudo')}>Conteúdo</button>
