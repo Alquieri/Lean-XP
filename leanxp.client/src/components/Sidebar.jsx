@@ -20,7 +20,7 @@ const Sidebar = () => {
             </div>
 
             {/* Navigation Links */}
-            <Link to="/" className="nav-link">
+            <Link to="/Home" className="nav-link">
                 <i className="fas fa-home"></i>
                 <span>Home</span>
             </Link>

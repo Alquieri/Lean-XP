@@ -7,10 +7,8 @@ import Container from './components/container';
 
 const API_URL = 'http://localhost:5000/api';
 
-
 function Perfil() {
-
-    const [user, setUser] = useState([]);
+    const [user, setUser] = useState({});
     const [achievements, setAchievements] = useState([]);
 
     const showError = (message) => {
@@ -22,59 +20,37 @@ function Perfil() {
             pauseOnHover: false,
             draggable: true,
             progress: undefined,
-
         });
     };
 
-    //const showSuccess = (message) => {
-    //    toast.success(message, {
-    //        position: "top-right",
-    //        autoClose: 3000,
-    //        hideProgressBar: false,
-    //        closeOnClick: true,
-    //        pauseOnHover: false,
-    //        draggable: true,
-    //        progress: undefined,
-    //    });
-    //};
-
     const getUser = async () => {
-
         const storedUser = localStorage.getItem("user");
-
         if (!storedUser) {
             showError("No user found in localStorage");
             return;
         }
         const user = JSON.parse(storedUser);
 
-        const response = await fetch(`${API_URL}/user/${user.id}`,
-
-            {
-                method: 'GET',
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            });
+        const response = await fetch(`${API_URL}/user/${user.id}`, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+            },
+        });
 
         if (!response.ok) {
             showError("Internal error, user cannot be located");
+            return;
         }
 
         const userData = await response.json();
-
         setUser(userData);
-
-    }
+    };
 
     const getAchievements = async () => {
         if (!user || !user.id) {
-            console.warn("User not defined yet");
             return;
         }
-        console.log("User:", user);
-        
-        
 
         const response = await fetch(`${API_URL}/achievement/all/${user.id}`, {
             method: 'GET',
@@ -89,13 +65,11 @@ function Perfil() {
         }
 
         const achievementsData = await response.json();
-        console.log(achievementsData);
         setAchievements(achievementsData);
-    }
+    };
 
     useEffect(() => {
         getUser();
-        
     }, []);
 
     useEffect(() => {
@@ -103,20 +77,18 @@ function Perfil() {
             getAchievements();
         }
     }, [user]);
+
     return (
         <>
             <Sidebar />
             <Container>
                 <section className="perfil-container">
-                   
                     <div className="perfil-info">
                         <img src={Computador} alt="Avatar" className="perfil-avatar" />
                         <div className="perfil-dados">
-                           
-                        <p className='perfil-nome'><strong>Nome:</strong> {user.nome}</p>
-                        <p className='perfil-email'><strong>Email:</strong> {user.email}</p>
-                        <p className='perfil-info'><strong>Cargo:</strong> {user.cargo}</p>
-                      
+                            <p className='perfil-nome'><strong>Nome:</strong> {user.nome}</p>
+                            <p className='perfil-email'><strong>Email:</strong> {user.email}</p>
+                            <p className='perfil-info'><strong>Cargo:</strong> {user.cargo}</p>
                         </div>
                     </div>
                     <div className="perfil-achievements-silver">
@@ -124,7 +96,10 @@ function Perfil() {
                         <ul className="perfil-achievements-list">
                             {achievements.length > 0 ? (
                                 achievements.map(a => (
-                                    <li key={a.id} className="perfil-achievement-item">
+                                    <li
+                                        key={a.id}
+                                        className={a.achievementStatus === 1 ? 'perfil-achievement-item' : 'perfil-achievement-item-silver'}
+                                    >
                                         {a.image ? (
                                             <img
                                                 src={`data:image/png;base64,${a.image}`}

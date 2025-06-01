@@ -32,7 +32,7 @@ public class AchievementService
            {
                Title = "Primeiro Login",
                Description = "Você acessou o sistema pela primeira vez!",
-               CssName = "achievement-first",
+               CssName = "perfil-achievement-item",
                Image = "https://img.icons8.com/fluency/48/000000/login-rounded-right.png",
                AchievementNumber = 1,
                achievementStatus = Enum.AchievementStatus.nok,
@@ -42,14 +42,13 @@ public class AchievementService
            {
                Title = "Curso Concluído",
                Description = "Parabéns por concluir seu primeiro curso!",
-               CssName = "achievement-second",
+               CssName = "perfil-achievement-item",
                Image = "https://img.icons8.com/fluency/48/000000/graduation-cap.png",
                AchievementNumber = 2,
                achievementStatus = Enum.AchievementStatus.nok,
                UserId = userId
            }
 
-         
        };
      
         foreach (var achievementDto in achievements)
@@ -189,30 +188,30 @@ public class AchievementService
             throw new Exception($"Achievement with id {id} not found");
         }
 
-        if (achievementDto.Title != null)
-        {
-            achievement.Title = achievementDto.Title;
-        }
-
-        if (achievementDto.Description != null)
+     
+        if (!string.IsNullOrEmpty(achievementDto.Title))
         {
             achievement.Description = achievementDto.Description;
         }
 
-        if (achievementDto.CssName != null)
+        if (!string.IsNullOrEmpty(achievementDto.Title))
         {
             achievement.CssName = achievementDto.CssName;
         }
 
-        if (achievementDto.Image != null)
+        if (!string.IsNullOrEmpty(achievementDto.Title))
         {
             achievement.Image = achievementDto.Image;
         }
 
-        if (achievementDto.ConquerDate != null)
+       
+
+        if (achievementDto.achievementStatus != achievement.achievementStatus)
         {
-            achievement.ConquerDate = achievementDto.ConquerDate;
+            achievement.achievementStatus = (Enum.AchievementStatus)achievementDto.achievementStatus;
         }
+
+
 
         var dbTest = await _context.SaveChangesAsync();
 

@@ -158,7 +158,21 @@
     align-items: center;
     gap: 8px;
 }
-
+.perfil-achievement-item-silver {
+    background: #f3f5f8;
+    border-radius: 8px;
+    padding: 10px 18px;
+    color: #b0b8c9;
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: 0 1px 4px rgba(79, 142, 247, 0.04);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.6;
+    filter: grayscale(0.7);
+    pointer-events:  none;
+}
 
 
 
