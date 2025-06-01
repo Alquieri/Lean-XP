@@ -66,8 +66,6 @@ public class AchievementService
         }
     }
 
-   
-
     public async Task<Achievement> GetAchievementById(int id)
     {
         var achievement = await _context.Achievements.FindAsync(id);
@@ -102,6 +100,17 @@ public class AchievementService
             throw new Exception($"No achievements found for user with id {userId}");
         }
         return achievements;
+    }
+
+    public async Task<Achievement> GetAchievementByUserIdNumber(int userId, int number)
+    {
+        var achievement = await _context.Achievements
+            .FirstOrDefaultAsync(a => a.UserId == userId && a.AchievementNumber == number);
+        if (achievement == null)
+        {
+            throw new Exception($"Achievement with number {number} not found for user with id {userId}");
+        }
+        return achievement;
     }
 
     public async Task<Achievement> CreateAchievement(AchievementCreateDto achievementDto)
@@ -174,6 +183,8 @@ public class AchievementService
             throw new Exception("There were no changes in database");
     }
 
+  
+
     public async Task<Achievement> UpdateAchievement(int id, AchievementUpdateDto achievementDto)
     {
         if (achievementDto == null)
@@ -211,14 +222,7 @@ public class AchievementService
             achievement.achievementStatus = (Enum.AchievementStatus)achievementDto.achievementStatus;
         }
 
-
-
         var dbTest = await _context.SaveChangesAsync();
-
-        if (dbTest == 0)
-        {
-            throw new Exception("There were no changes in database");
-        }
 
         return achievement;
     }

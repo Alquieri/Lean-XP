@@ -31,6 +31,7 @@ public class AchievementController : Controller
             return BadRequest(new { message = ex.Message });
         }
     }
+
     [HttpGet("type")]
     public async Task<IActionResult> GetAchievementById(int id)
     {
@@ -58,6 +59,19 @@ public class AchievementController : Controller
             return BadRequest(new { message = ex.Message });
         }
     }
+    [HttpGet("UserIdNumber")]
+    public async Task<IActionResult> GetAchievementByUserIdNumber(int userId, int number)
+    {
+        try
+        {
+            var achievement = await _achievementService.GetAchievementByUserIdNumber(userId, number);
+            return Ok(achievement);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
+    }
 
     [HttpPost]
     public async Task<IActionResult> PostAchievement([FromBody] AchievementCreateDto achievement)
@@ -77,8 +91,8 @@ public class AchievementController : Controller
         }
     }
 
-    [HttpPatch]
-    public async Task<IActionResult> UpdateAchievement(int id,[FromBody] AchievementUpdateDto achievement)
+    [HttpPatch("patch/{id}")]
+    public async Task<IActionResult> UpdateAchievement(int id, [FromBody] AchievementUpdateDto achievement)
     {
         try
         {
@@ -86,8 +100,8 @@ public class AchievementController : Controller
             {
                 return BadRequest(new { message = "Achievement cannot be null" });
             }
-            var updatedAchievement = await _achievementService.UpdateAchievement(id,achievement);
-            return Ok(updatedAchievement);
+            var updatedAchievement = await _achievementService.UpdateAchievement(id, achievement);
+            return Ok( updatedAchievement);
         }
         catch (Exception ex)
         {

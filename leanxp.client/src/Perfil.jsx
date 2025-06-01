@@ -5,6 +5,8 @@ import Sidebar from './components/Sidebar';
 import Computador from './assets/computador.png';
 import Container from './components/container';
 
+
+
 const API_URL = 'http://localhost:5000/api';
 
 function Perfil() {
@@ -75,6 +77,7 @@ function Perfil() {
     useEffect(() => {
         if (user && user.id) {
             getAchievements();
+            
         }
     }, [user]);
 
@@ -109,6 +112,7 @@ function Perfil() {
                                         ) : (
                                             <div>Sem imagem</div>
                                         )}
+                                        {console.log(achievements)}
                                         <div>
                                             <strong>{a.title}:</strong> {a.description}
                                         </div>

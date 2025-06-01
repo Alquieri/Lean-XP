@@ -1,15 +1,19 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './css/Home.css';
 import Sidebar from './components/Sidebar';
 import Modulo from './components/Modulo';
 import Computador from './assets/computador.png';
 import Container from './components/container';
 import Conteudo from './Conteudo.jsx';
+import { ToastContainer } from 'react-toastify';
+import { WinAchievement } from './AchievementService.jsx';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Home() {
 
     const modulosRefs = useRef([]);
     const [moduloAtivo, setModuloAtivo] = useState(null);
+    const [userAchievements, setUserAchievements] = useState([]);
 
     const [modulos, setModulos] = useState([
         { numero: '01', titulo: 'Introdução ao Lean', status: 'confirmed', video: 'https://www.youtube.com/embed/ttxsCvdXnu4' },
@@ -50,8 +54,21 @@ function Home() {
         }
     };
 
+
+
+    useEffect(() => {
+        const localUser = localStorage.getItem('user');
+        if (localUser) {
+            const runAchievement = async () => {
+                await WinAchievement(1);
+            };
+            runAchievement();
+        }
+    }, []);
+
     return (
         <>
+            <ToastContainer />
             <Sidebar />
             <Container>
                 <div id="main">
@@ -77,8 +94,10 @@ function Home() {
                     </div>
 
                     <div id="modules">
-                        {modulos.map((modulo, index) => (
+                        
+                        { modulos.map((modulo, index) => (
                             <div ref={el => modulosRefs.current[index] = el} key={modulo.numero}>
+
                                 <Modulo
                                     numero={modulo.numero}
                                     titulo={modulo.titulo}
@@ -120,6 +139,7 @@ function Home() {
                     </div>
                 </div>
             </Container>
+            
         </>
     );
 }
