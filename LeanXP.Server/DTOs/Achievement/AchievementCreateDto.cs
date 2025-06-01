@@ -25,4 +25,6 @@ public class AchievementCreateDto
 
     [JsonPropertyName("UserId")]
     public int UserId { get; set; }
+
+ 
 }

@@ -1,4 +1,6 @@
-﻿namespace LeanXP.Server.DTOs.User;
+﻿using System.Text.Json.Serialization;
+
+namespace LeanXP.Server.DTOs.User;
 
 public class UserCreateDto
 {
@@ -9,4 +11,7 @@ public class UserCreateDto
     public string Password { get; set; }
 
     public int Percentual { get; set; } // 0 a 100
+
+    [JsonPropertyName("ModuleNumber")]
+    public int ModuleNumber { get; set; }
 }

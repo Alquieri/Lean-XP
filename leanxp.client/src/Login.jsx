@@ -66,7 +66,8 @@ const Login = () => {
                     name: formData.name,
                     email: formData.email,
                     password: formData.password,
-                    percentual: 0
+                    percentual: 0,
+                    moduleNumber: 0
                 })
             });
 

@@ -48,6 +48,9 @@ public class AppDbContext : DbContext
             .HasConversion<int>()
             .IsRequired();
 
+        modelBuilder.Entity<User>()
+            .Property(u => u.ModuleNumber)
+            .IsRequired();
 
         modelBuilder.Entity<Achievement>()
             .ToTable("Achievement")

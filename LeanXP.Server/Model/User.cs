@@ -19,5 +19,7 @@ public class User
     public int Percentual { get; set; } // 0 a 100
     public ICollection<Achievement> Achievements { get; set; }
 
+    public int ModuleNumber { get; set; }
+
 
 }
