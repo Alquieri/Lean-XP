@@ -5,6 +5,7 @@ import { AuthProvider } from './AuthContext.jsx';
 import Home from './Home';
 import Login from './Login';
 import Perfil from './Perfil';
+import Sobre from './Sobre';
 import { ToastContainer } from 'react-toastify';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -16,7 +17,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/login" element={<Login />} />
           <Route path="/Home" element={<Home />} />
           <Route path="/perfil" element={<Perfil />} />
-          <Route path="/sobre" element={<h1>Sobre</h1>} />
+          <Route path="/sobre" element={<Sobre />} />
         </Routes>
       </AuthProvider>
     </BrowserRouter>
