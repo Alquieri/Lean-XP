@@ -35,19 +35,20 @@
     transition: background-color 0.3s ease;
 }
 
-#continue h1 {
+
+
+#continue-button {
     font-size: 1.5em;
-    color: #004D40; 
+    color: #004D40;
     padding: 0.6em 1em;
-    background-color: #B2DFDB; 
+    background-color: #B2DFDB;
     border-radius: 20px;
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
     transition: all 0.3s ease;
 }
 
-
-#continue h1:hover {
-    background-color: #00897B; 
+#continue-button:hover {
+    background-color: #00897B;
     color: white;
     cursor: pointer;
     transform: translateY(-2px);

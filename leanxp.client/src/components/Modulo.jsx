@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/Modulo.css';
 import Modal from './Modal';
 import imgConfimed from '../assets/confirmation.png';
@@ -30,6 +30,9 @@ const Modulo = (props) => {
         if (props.status !== 'lock') {
             setModalContent('conteudo');
             setIsModalOpen(true);
+            if (props.setModuloAtivo) {
+                props.setModuloAtivo(props.numero);
+            }
         }
     };
 
@@ -70,6 +73,13 @@ const Modulo = (props) => {
         }
     };
 
+    useEffect(() => {
+        if (props.moduloAtivo === props.numero) {
+            setModalContent('conteudo');
+            setIsModalOpen(true);
+        }
+    }, [props.moduloAtivo, props.numero]);
+
     return (
         <>
             <div id="main-modulo" onClick={handleClick}>
@@ -80,7 +90,15 @@ const Modulo = (props) => {
                 </div>
             </div>
 
-            <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+            <Modal
+                isOpen={isModalOpen}
+                onClose={() => {
+                    setIsModalOpen(false);
+                    if (props.setModuloAtivo) {
+                        props.setModuloAtivo(null);
+                    }
+                }}
+            >
                 <h2 className="modal-title">Módulo {props.numero}</h2>
                 <p className="modal-description">{props.titulo}</p>
 
