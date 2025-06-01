@@ -27,7 +27,7 @@ public class AchievementService
     public async Task CreateAllAchievements(int userId)
     {
         var achievements = new List<AchievementCreateDto>
-       {
+           {
            new AchievementCreateDto
            {
                Title = "Primeiro Login",
@@ -40,16 +40,46 @@ public class AchievementService
            },
            new AchievementCreateDto
            {
-               Title = "Curso Concluído",
-               Description = "Parabéns por concluir seu primeiro curso!",
+               Title = "Módulo Concluído",
+               Description = "Parabéns por concluir seu primeiro módulo!",
                CssName = "perfil-achievement-item",
                Image = "https://img.icons8.com/fluency/48/000000/graduation-cap.png",
                AchievementNumber = 2,
                achievementStatus = Enum.AchievementStatus.nok,
                UserId = userId
-           }
+           },
+            new AchievementCreateDto
+           {
+               Title = "LeanXP",
+               Description = "Leu sobre o LeanXP",
+               CssName = "perfil-achievement-item",
+               Image = "https://img.icons8.com/fluency/48/000000/book.png",
+               AchievementNumber = 3,
+               achievementStatus = Enum.AchievementStatus.nok,
+               UserId = userId
+           },
+             new AchievementCreateDto
+              {
+                Title = "Primeiro Diamante",
+                Description = "Você ganhou seu primeiro Diamante!",
+                CssName = "perfil-achievement-item",
+                Image = "https://img.icons8.com/fluency/48/000000/graduation-cap.png",
+                AchievementNumber = 4,
+                achievementStatus = Enum.AchievementStatus.nok,
+                UserId = userId
+              },
+              new AchievementCreateDto
+              {
+                Title = "100%",
+                Description = "Você atingiu 100% de XP!",
+                CssName = "perfil-achievement-item",
+                Image = "https://img.icons8.com/fluency/48/000000/graduation-cap.png",
+                AchievementNumber = 5,
+                achievementStatus = Enum.AchievementStatus.nok,
+                UserId = userId
+              }
 
-       };
+           };
      
         foreach (var achievementDto in achievements)
         {

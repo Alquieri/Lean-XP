@@ -89,9 +89,9 @@ function Perfil() {
                     <div className="perfil-info">
                         <img src={Computador} alt="Avatar" className="perfil-avatar" />
                         <div className="perfil-dados">
-                            <p className='perfil-nome'><strong>Nome:</strong> {user.nome}</p>
+                            <p className='perfil-nome'><strong>{user.name}</strong></p>
                             <p className='perfil-email'><strong>Email:</strong> {user.email}</p>
-                            <p className='perfil-info'><strong>Cargo:</strong> {user.cargo}</p>
+                            <p className='perfil-info'><strong>Cargo:</strong> Desenvolvedor Junior</p>
                         </div>
                     </div>
                     <div className="perfil-achievements-silver">

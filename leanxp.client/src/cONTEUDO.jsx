@@ -128,7 +128,6 @@ Nos próximos módulos, mergulharemos profundamente em cada um desses princípio
 const markdownContentModulo2 = `
 # Módulo 2: O Coração do Lean - Eliminando Desperdício (Muda) no Desenvolvimento de Software
 
-**(Página/Seção de Abertura do Módulo)**
 
 ## Caça aos Desperdícios: Afiando o Machado do Desenvolvedor Lean
 
@@ -330,7 +329,6 @@ Lembre-se, o objetivo não é apenas "ser mais rápido", mas ser mais eficaz na 
 const markdownContentModulo3 = `
 # Módulo 3: Amplificar o Aprendizado - Navegando na Incerteza com Conhecimento
 
-**(Página/Seção de Abertura do Módulo)**
 
 ## O Conhecimento como Bússola: Aprendendo para Construir Melhor
 
@@ -455,7 +453,6 @@ O aprendizado acumulado através destas práticas nos fornecerá informações c
 const markdownContentModulo4 = `
 # Módulo 4: A Arte da Paciência Estratégica - Decidir o Mais Tarde Possível
 
-**(Página/Seção de Abertura do Módulo)**
 
 ## O Poder do Tempo: Tomando Decisões Mais Sábias e Flexíveis
 
@@ -591,7 +588,6 @@ const markdownContentModulo5 = `
 
 # Módulo 5: A Velocidade do Valor - Entregar o Mais Rápido Possível
 
-**(Página/Seção de Abertura do Módulo)**
 
 ## Encurtando a Distância: Do Conceito ao Cliente em Tempo Recorde
 
@@ -741,7 +737,6 @@ Este princípio depende fortemente do empoderamento da equipe, que será o foco 
 
 const markdownContentModulo6 = `# Módulo 6: A Força da Confiança - Empoderando a Equipe para a Excelência
 
-**(Página/Seção de Abertura do Módulo)**
 
 ## Liberando o Potencial Humano: O Poder das Equipes Empoderadas
 
@@ -873,7 +868,6 @@ Uma equipe empoderada é fundamental para sustentar todos os outros princípios 
 ---`;
 const markdownContentModulo7 = `# Módulo 7: Qualidade Inegociável - Construindo Excelência em Cada Linha de Código
 
-**(Página/Seção de Abertura do Módulo)**
 
 ## O Alicerce da Confiança: Qualidade Embutida, Não Inspecionada
 
@@ -996,7 +990,6 @@ No próximo módulo, veremos como otimizar o sistema como um todo, integrando to
 
 const markdownContentModulo8 = `# Módulo 8: A Visão Panorâmica - Otimizando o Sistema de Ponta a Ponta
 
-**(Página/Seção de Abertura do Módulo)**
 
 ## A Sinfonia da Eficiência: Enxergando e Melhorando o Todo
 
@@ -1113,7 +1106,7 @@ O convite agora é para você:
 4.  **Compartilhe e Colabore:** Envolva sua equipe. O Lean é um esforço colaborativo.
 5.  **Continue Aprendendo:** O universo Lean é vasto e continua evoluindo. Busque mais conhecimento em livros, artigos, comunidades e, o mais importante, na prática diária.
 
-**Recursos Adicionais Sugeridos (Exemplos):**
+**Recursos Adicionais Sugeridos :**
 * **Livros:**
     * "Lean Software Development: An Agile Toolkit" por Mary e Tom Poppendieck.
     * "Implementing Lean Software Development: From Concept to Cash" por Mary e Tom Poppendieck.

@@ -8,12 +8,15 @@ import Conteudo from './Conteudo.jsx';
 import { ToastContainer } from 'react-toastify';
 import { WinAchievement } from './AchievementService.jsx';
 import 'react-toastify/dist/ReactToastify.css';
+import { useAuth } from './AuthContext.jsx';
 
 function Home() {
 
     const modulosRefs = useRef([]);
     const [moduloAtivo, setModuloAtivo] = useState(null);
     const [userAchievements, setUserAchievements] = useState([]);
+    const { user, isAuthenticated } = useAuth();
+
 
     const [modulos, setModulos] = useState([
         { numero: '01', titulo: 'Introdução ao Lean', status: 'confirmed', video: 'https://www.youtube.com/embed/ttxsCvdXnu4' },
@@ -75,7 +78,7 @@ function Home() {
                     <div id="Header">
                         <div className="boas-vindas">
                             <p>
-                                <strong>Bem-vindo #username</strong><br />
+                                <strong>Bem-vindo(a) {user.name} </strong><br />
                                 <span>ao curso de <span className="destaque">Lean Software Development</span></span>
                             </p>
                         </div>
@@ -84,7 +87,7 @@ function Home() {
                     <div id="continue">
                         <img src={Computador} alt="Computador" />
                         <button id="continue-button"
-                                onClick={handleContinue} >Continue de onde parou</button>
+                                onClick={handleContinue} > <strong>Continue de onde parou</strong></button>
                         <div className="progresso-container">
                             <h2>Progresso:</h2>
                             <div id="progress-bar">
