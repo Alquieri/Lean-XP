@@ -1,4 +1,6 @@
-
+body {
+    background: #E0F7FA;
+}
 
 .perfil-container {
     max-width: 440px;
@@ -19,7 +21,7 @@
     height: 140px;
     border-radius: 50%;
     object-fit: cover;
-    border: 6px solid #4F8EF7;
+    border: 4px solid #1e4b46;
     margin: 0 auto 28px auto;
     box-shadow: 0 4px 18px rgba(79, 142, 247, 0.13);
     background: #f0f6ff;
@@ -39,7 +41,7 @@
 
 .perfil-email {
     font-size: 1.12rem;
-    color: #4F8EF7;
+    color: #1e4b46;
     margin-bottom: 22px;
     text-align: center;
     font-family: 'Inter', Arial, sans-serif;
@@ -71,16 +73,16 @@
 .perfil-info span {
     display: block;
     font-size: 1.18rem;
-    color: #23408e;
+    color: #1e4b46;
     margin-bottom: 12px;
-    font-weight: 700;
+    font-weight: 700; 
     font-family: 'Montserrat', 'Inter', Arial, sans-serif;
 }
 
 .perfil-editar-btn {
     margin-top: 32px;
     padding: 13px 42px;
-    background: linear-gradient(90deg, #4F8EF7 60%, #3766b1 100%);
+    background: linear-gradient(90deg, #1e4b46 60%, #3766b1 100%);
     color: #fff;
     border: none;
     border-radius: 12px;
@@ -114,9 +116,10 @@
 
 
 .perfil-achievements-title {
-    font-size: 1.25rem;
+    font-size: 2rem;
     font-weight: 700;
-    color: #3766b1;
+    color: #1e4b46;
+    margin-top: 18px;
     margin-bottom: 14px;
     letter-spacing: 0.5px;
     text-align: center;
@@ -137,7 +140,7 @@
     background: #e9f0fa;
     border-radius: 8px;
     padding: 10px 18px;
-    color: #23408e;
+    color: #1e4b46;
     font-size: 1rem;
     font-weight: 600;
     box-shadow: 0 1px 4px rgba(79, 142, 247, 0.07);
@@ -150,7 +153,7 @@
     background: #e9f0fa;
     border-radius: 8px;
     padding: 10px 18px;
-    color: #23408e;
+    color: #1e4b46;
     font-size: 1rem;
     font-weight: 600;
     box-shadow: 0 1px 4px rgba(79, 142, 247, 0.07);
@@ -171,10 +174,8 @@
     gap: 8px;
     opacity: 0.6;
     filter: grayscale(0.7);
-    pointer-events:  none;
+    pointer-events: ï¿½none;
 }
-
-
 
 
 .perfil-achievement-icon {

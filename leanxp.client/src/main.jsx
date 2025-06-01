@@ -13,8 +13,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <AuthProvider>
         <ToastContainer />
         <Routes>
-          <Route path="/Home" element={<Home />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/Home" element={<Home />} />
           <Route path="/perfil" element={<Perfil />} />
           <Route path="/sobre" element={<h1>Sobre</h1>} />
         </Routes>

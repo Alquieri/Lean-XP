@@ -7,10 +7,10 @@ export async function WinAchievement(number) {
     }
     const user = JSON.parse(localUser);
 
-    // Inclui o UserID na chave do localStorage para garantir unicidade por usu·rio
+    // Inclui o UserID na chave do localStorage para garantir unicidade por usu√°rio
     const key = `achievement_${user.id}_${number}_shown`;
     if (localStorage.getItem(key)) {
-        // Achievement j· mostrado para este usu·rio, n„o exibe novamente
+        // Achievement j√° mostrado para este usu√°rio, n√£o exibe novamente
         return;
     }
 
@@ -40,15 +40,15 @@ export async function WinAchievement(number) {
         // Busca achievement do backend
         const response = await fetch(`http://localhost:5000/api/achievement/UserIdNumber?userId=${user.id}&number=${number}`);
         if (!response.ok) {
-            console.error('Erro na requisiÁ„o:', response.status);
+            console.error('Erro na requisi√ß√£o:', response.status);
             return;
         }
 
         const achievement = await response.json();
 
-        // Verifica se o achievement j· est· desbloqueado
+        // Verifica se o achievement j√° est√° desbloqueado
         if (achievement.achievementStatus === 1) {
-            // Achievement j· desbloqueado; n„o mostra a mensagem novamente
+            // Achievement j√° desbloqueado; n√£o mostra a mensagem novamente
             return;
         }
 
@@ -67,9 +67,9 @@ export async function WinAchievement(number) {
         const updatedAchievement = await patchResponse.json();
 
         // Mostrar mensagem toast
-        showWin('ParabÈns! VocÍ desbloqueou um novo achievement!', updatedAchievement.image);
+        showWin('Parab√©ns! Voc√™ desbloqueou um novo achievement!', updatedAchievement.image);
 
-        // Marca no localStorage que o achievement j· foi mostrado para este usu·rio
+        // Marca no localStorage que o achievement j√° foi mostrado para este usu√°rio
         localStorage.setItem(key, 'true');
 
     } catch (error) {
