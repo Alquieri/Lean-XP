@@ -3,9 +3,19 @@ import React, { useState } from 'react';
 import '../css/Sidebar.css';
 import logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
+import { WinAchievement } from '../AchievementService.jsx';
 
 const Sidebar = () => {
     const [isDarkMode, setIsDarkMode] = useState(true);
+
+
+    // Função para desbloquear conquista ao entrar em "Sobre"
+    const handleSobreClick = () => {
+        const localUser = localStorage.getItem('user');
+        if (localUser) {
+            WinAchievement(3);
+        }
+    };
 
     return (
         <div className={`sidebar ${!isDarkMode ? 'light-mode' : ''}`}>
@@ -20,7 +30,10 @@ const Sidebar = () => {
             </div>
 
             {/* Navigation Links */}
-            <Link to="/Home" className="nav-link">
+            <Link
+                to="/Home"
+                className="nav-link"
+            >
                 <i className="fas fa-home"></i>
                 <span>Home</span>
             </Link>
@@ -28,13 +41,14 @@ const Sidebar = () => {
                 <i className="fas fa-user"></i>
                 <span>Perfil</span>
             </Link>
-            <Link to="/Sobre" className="nav-link">
+            <Link
+                to="/Sobre"
+                className="nav-link"
+                onClick={handleSobreClick}
+            >
                 <i className="fas fa-book-open"></i>
                 <span>Sobre</span>
             </Link>
-
-
-            {/* Bottom Section */}
             <div className="bottom-section">
                 <Link to="/login" className="login-button">
                     <i className="fas fa-sign-in-alt"></i>
