@@ -51,6 +51,14 @@ const Modulo = (props) => {
                     </div>
                 );
             case 'video':
+                if (!props.video) {
+                    return (
+                        <div>
+                            <h3>Vídeo</h3>
+                            <p>Vídeo não disponível.</p>
+                        </div>
+                    );
+                }
                 return (
                     <div>
                         <h3>Vídeo</h3>

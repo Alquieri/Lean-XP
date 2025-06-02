@@ -23,10 +23,10 @@ function Home() {
         { numero: '02', titulo: 'Eliminação de Desperdícios', status: 'confirmed' },
         { numero: '03', titulo: 'Melhoria Contínua', status: 'confirmed' },
         { numero: '04', titulo: 'Empoderamento da Equipe', status: 'confirmed' },
-        { numero: '05', titulo: 'Foco no Cliente', status: 'pending' },
-        { numero: '06', titulo: 'Cultura Lean', status: 'lock' },
-        { numero: '07', titulo: 'Lean e Agile', status: 'lock' },
-        { numero: '08', titulo: 'Lean em Ação', status: 'lock' }
+        { numero: '05', titulo: 'Foco no Cliente', status: 'confirmed' },
+        { numero: '06', titulo: 'Cultura Lean', status: 'confirmed' },
+        { numero: '07', titulo: 'Lean e Agile', status: 'confirmed' },
+        { numero: '08', titulo: 'Lean em Ação', status: 'pending' }
     ]);
 
     const porcentagem = (modulos.filter(m => m.status === 'confirmed').length / modulos.length) * 100;
@@ -40,11 +40,20 @@ function Home() {
             // Confirma o módulo atual
             newModulos[index].status = 'confirmed';
 
+            // Quando o módulo 2 for desbloqueado, ativa o achievement
+            if (index + 1 === 1 && newModulos[index + 1].status === 'lock') {
+                const localUser = localStorage.getItem('user');
+                if (localUser) {
+                    const runAchievement = async () => {
+                        await WinAchievement(2);
+                    };
+                    runAchievement();
+                }
+            }
+
             // Desbloqueia o próximo, se existir
             if (index + 1 < newModulos.length && newModulos[index + 1].status === 'lock') {
                 newModulos[index + 1].status = 'pending';
-
-                
             }
 
             return newModulos;
@@ -58,7 +67,6 @@ function Home() {
     };
 
 
-
     useEffect(() => {
         const localUser = localStorage.getItem('user');
         if (localUser) {
@@ -68,6 +76,17 @@ function Home() {
             runAchievement();
         }
     }, []);
+
+    // Verifica se o usuário já completou todos os módulos e ganhou o achievement 5
+    useEffect(() => {
+        const localUser = localStorage.getItem('user');
+        if (localUser && porcentagem === 100) {
+            const runAchievement = async () => {
+                await WinAchievement(5);
+            };
+            runAchievement();
+        }
+    }, [porcentagem]);
 
     return (
         <>

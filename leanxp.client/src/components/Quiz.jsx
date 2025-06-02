@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import questions from '../data/questions';
 import '../css/Modal.css';
+import { WinAchievement } from '../AchievementService.jsx';
 
 const Quiz = (props) => {
     const [userAnswers, setUserAnswers] = useState({});
@@ -29,6 +30,17 @@ const Quiz = (props) => {
         if (newScore >= 3 && props.onQuizComplete) {
             props.onQuizComplete();
         }
+        // Se acertar todas as 5, desbloqueia achievement 4
+        if (newScore === 5) {
+            const localUser = localStorage.getItem('user');
+            if (localUser && WinAchievement) {
+                const runAchievement = async () => {
+                    await WinAchievement(4);
+                };
+                runAchievement();
+            }
+        }
+
     };
 
     return (

@@ -4,6 +4,16 @@ login-container {
     color: #ffffff;
 }
 
+.overlay-rightt {
+    right: 0;
+    /* transform: translateX(10%); */
+}
+
+.overlay-leftt {
+    left: 0;
+    /* transform: translateX(10%); */
+}
+
 .login-container {
   width: 100%;
   height: 100vh;
