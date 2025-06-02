@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import '../css/Sidebar.css';
 import logo from '../assets/logo.png';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../AuthContext.jsx';
 
 const Sidebar = () => {
     const [isDarkMode, setIsDarkMode] = useState(true);
-
+    const logout = useAuth().logout;
     return (
         <div className={`sidebar ${!isDarkMode ? 'light-mode' : ''}`}>
             {/* Top Icon Section (Diamond) */}
@@ -36,7 +37,8 @@ const Sidebar = () => {
 
             {/* Bottom Section */}
             <div className="bottom-section">
-                <Link to="/login" className="login-button">
+                <Link to="/login" className="login-button"
+                    onClick={logout }>
                     <i className="fas fa-sign-in-alt"></i>
                     <span>Sign out</span>
                 </Link>

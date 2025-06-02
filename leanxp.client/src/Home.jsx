@@ -78,7 +78,11 @@ function Home() {
                     <div id="Header">
                         <div className="boas-vindas">
                             <p>
-                                <strong>Bem-vindo(a) {user.name} </strong><br />
+                                <strong>Bem-vindo(a) {isAuthenticated && user ? (
+                                    <span>{user.name}</span>
+                                ) : (
+                                    <span>Por favor, faça login</span>
+                                )} </strong><br />
                                 <span>ao curso de <span className="destaque">Lean Software Development</span></span>
                             </p>
                         </div>
