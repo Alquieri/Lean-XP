@@ -84,7 +84,7 @@ public class UserController : Controller
         }
     }
 
-    [HttpPatch("patch")]
+    [HttpPatch("patch/{id}")]
     public async Task<IActionResult> PatchUser(int id, [FromBody] UserCreateDto userDto)
     {
         try

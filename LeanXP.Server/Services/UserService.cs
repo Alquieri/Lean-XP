@@ -96,13 +96,12 @@ public class UserService
         {
             user.Percentual = userDto.Percentual;
         }
-
-        var dbTest = await _context.SaveChangesAsync();
-
-        if (dbTest == 0)
+        if(userDto.ModuleNumber != 0)
         {
-            throw new Exception("There were no changes in database");
+            user.ModuleNumber = userDto.ModuleNumber;
         }
+
+        await _context.SaveChangesAsync();
 
         return _mapper.Map<UserReadDto>(user);
     }
