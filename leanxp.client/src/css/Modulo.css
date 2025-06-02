@@ -67,6 +67,9 @@
     border-radius: 6px;
     cursor: pointer;
     transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .modulo-buttons button:hover {
@@ -77,3 +80,16 @@
     margin-top: 15px;
 }
 
+.modal-title {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+    color: #333333;
+    text-align: center;
+}
+
+.modal-description {
+    font-size: 1.2em;
+    color: #555555;
+    margin-bottom: 20px;
+    text-align: center;
+}
