@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { AuthProvider } from './AuthContext.jsx';
-import Home from './Home';
-import Login from './Login';
-import Perfil from './Perfil';
-import Sobre from './Sobre';
+import { AuthProvider } from './Context/AuthContext.jsx';
+import Home from './Pages/Home/Home.jsx';
+import Login from './Pages/Login/Login.jsx';
+import Perfil from './Pages/Perfil/Perfil.jsx';
+import Sobre from './Pages/Sobre/Sobre.jsx';
 import { ToastContainer } from 'react-toastify';
 
 ReactDOM.createRoot(document.getElementById('root')).render(

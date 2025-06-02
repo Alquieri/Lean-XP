@@ -1,0 +1,20 @@
+.question {
+    font-size: 1.2em;
+    padding: 0.5em 1em 0.5em 0.5em; /* top right bottom left */
+    border-radius: 5px;
+    background-color: #dee7e6;
+    color: #000000;
+    font-weight: 500;
+}
+.button.submit-button {
+    margin-top: 1em;
+    display: inline-block;
+    padding: 0.5em 1em;
+    background-color: #1e4b46;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    font-size: 1em;
+}
